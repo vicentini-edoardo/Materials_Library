@@ -1,6 +1,6 @@
 # Materials Library
 
-A built-in catalog of 48 sourced infrared material definitions. The source data and model details are in [CATALOG.md](CATALOG.md).
+A built-in catalog of 45 sourced infrared material definitions. The source data and model details are in [CATALOG.md](CATALOG.md).
 
 ## Install and use
 
@@ -11,13 +11,13 @@ python -m pip install .
 ```python
 from materials_library import names, load, eps_tensor, sheet_conductivity
 
-names()                         # canonical names, including pending models
+names()                         # canonical material names
 material = load("hBN")          # metadata, references, status, valid range
 epsilon = eps_tensor(material, [800, 1000])  # complex (N, 3, 3) array
 sigma = sheet_conductivity(load("graphene"), [800, 1000])
 ```
 
-Frequency is wavenumber in cm⁻¹. Bulk tensors use the material crystal frame and the exp(−iωt) convention. Table models interpolate linearly and clamp outside their table range; check `valid_range_cm1` before quantitative use. Sheet materials are 2D conductivities and `eps_tensor` rejects them. The three `pending` definitions are placeholders; inspect each material's `status` and `notes` before use.
+Frequency is wavenumber in cm⁻¹. Bulk tensors use the material crystal frame and the exp(−iωt) convention. Table models interpolate linearly and clamp outside their table range; check `valid_range_cm1` before quantitative use. Sheet materials are 2D conductivities and `eps_tensor` rejects them. Inspect each material's `status` and `notes` before use.
 
 ## Maintain
 

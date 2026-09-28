@@ -55,7 +55,6 @@ R = {
  'Reparaz2018': dict(citation='J. S. Reparaz et al., Comparative study of the pressure dependence of optical-phonon transverse-effective charges and linewidths in wurtzite InN, Phys. Rev. B 98, 165204 (2018)', doi='10.1103/PhysRevB.98.165204'),
  'Falkovsky2008': dict(citation='L. A. Falkovsky, Optical properties of graphene, J. Phys.: Conf. Ser. 129, 012004 (2008)', url='https://arxiv.org/abs/0806.3663'),
  'Low2014': dict(citation='T. Low et al., Plasmons and screening in monolayer and multilayer black phosphorus, Phys. Rev. Lett. 113, 106802 (2014)', url='https://arxiv.org/abs/1404.4035'),
- 'Han2006': dict(citation='J. Han et al., Dielectric response of soft mode in ferroelectric SrTiO3, arXiv:cond-mat/0612296', url='https://arxiv.org/abs/cond-mat/0612296'),
  'pyGTM': dict(citation='pyGTM Permittivities.py @7a228b7 (M. Jeannin, GPL-3.0) — value carried over, no primary source identified', url='https://github.com/pyMatJ/pyGTM'),
 }
 def refs(*keys, used=None):
@@ -183,11 +182,6 @@ add('calcite', aliases=['CaCO3'], tensor='uniaxial', status='secondary', valid_r
              tolo(2.4, [(871, 890, 3.0), (303, 387, 9.1), (92, 136, 5.6)])),
     notes=['Values from hyperbolic_optics; primary source (Lane 1999, used by Ma et al. 2021 for ghost polaritons) not opened. VERIFY before quantitative use.',
            'eps_inf check: visible n_o^2 = 2.75, n_e^2 = 2.21 (Ghosh), so eps_inf_e = 2.4 looks high.'])
-add('SrTiO3', tensor='isotropic', status='pending', axes=dict(iso=dict(type='constant', eps=5.20)), valid_range_cm1=[1000, 5000], references=refs('Han2006'),
-    notes=['Only eps_inf = 5.20 and TO1 = 90, TO2 = 178, TO4 = 546 cm-1 (Han 2006) sourced so far; LO modes missing, so the reststrahlen band is NOT modelled.'])
-add('BaTiO3', tensor='isotropic', status='pending', axes=dict(iso=dict(type='constant', eps=5.6)), valid_range_cm1=[2000, 14000], references=refs('pyGTM'),
-    notes=['Old pyGTM eps_inf = 2.356 is exactly the alpha-quartz ordinary eps_inf (likely a copy error); visible n^2 = 5.5-5.7 (Wemple).', 'Phonon model and tetragonal anisotropy still to be sourced; constant is a transparent-range placeholder.'])
-
 # ============================================================= monoclinic (rank-1 oscillator sum)
 def mono_osc(A, to, g, alpha=None, G=0.0, sym='Bu'):
     e = [alpha, 0.0, 0.0] if alpha is not None else [0.0, 90.0, 90.0]
@@ -248,7 +242,6 @@ R.update({
  'Lockwood2005': dict(citation='D. J. Lockwood, G. Yu, N. L. Rowell, Solid State Commun. 136, 404 (2005), Table 2 (293 K)', doi='10.1016/j.ssc.2005.08.030'),
  'Ashkenov2003': dict(citation='N. Ashkenov et al., J. Appl. Phys. 93, 126 (2003), Tables I-II', doi='10.1063/1.1526935'),
  'Jasperse1966': dict(citation='J. R. Jasperse, A. Kahan, J. N. Plendl, S. S. Mitra, Phys. Rev. 146, 526 (1966), Tables I-II (295 K)', doi='10.1103/PhysRev.146.526'),
- 'Nolen2020': dict(citation='J. R. Nolen et al., Phys. Rev. Materials 4, 025202 (2020) (In:CdO)', doi='10.1103/PhysRevMaterials.4.025202'),
  'Mock2017': dict(citation='A. Mock, R. Korlacki, S. Knight, M. Schubert, Phys. Rev. B 95, 165202 (2017), Tables II-IV', doi='10.1103/PhysRevB.95.165202'),
 })
 def sk(eps_inf, osc):
@@ -338,14 +331,6 @@ add('MgO', tensor='isotropic', status='verified', valid_range_cm1=[100, 27778], 
            'Above ~2000 cm-1 the Stephens & Malitson table (eps 2.6-2.97) is more accurate than the constant eps_inf.'])
 add('LiF', tensor='isotropic', status='verified', valid_range_cm1=[100, 5000], references=refs('Jasperse1966'),
     axes=dict(iso=sk(1.90, [(306, 6.80, 0.0600), (503, 0.110, 0.180)])), notes=['295 K row of Jasperse Table I.'])
-# --- CdO: Nolen 2020 recipe (damping not tabulated) -----------------------------------------------------
-add('CdO_doped', tensor='isotropic', status='pending', valid_range_cm1=[150, 33333], references=refs('Nolen2020'),
-    axes=dict(iso=dict(type='drude', eps_inf=5.3, wp=3680.0, gamma=1.0)),
-    recipe=dict(eps_inf='5.6 (low N) to 5.1 (high N)', effective_mass='m* = m0* (1 + 2C hbar^2/m0* (3 pi^2 N)^(2/3)), m0* = 0.10 m0, C = 0.69 eV^-1',
-                plasma_frequency='w_p = sqrt(N e^2/(m* eps_inf eps0)); measured 2584, 3680, 5215 cm-1 at N = 6.6e19, 1.4e20, 4.1e20 cm-3',
-                damping='gamma = e/(mu_opt m*); mu_opt per film only in Fig. 4b / Supplemental Material', TO_phonon_cm1=266, LO_phonon='from Finkenrath et al. (ref. 85), not given in the paper'),
-    notes=['Placeholder: gamma = 1 cm-1 is NOT a measured value. Supply the optical mobility of your film (or read Fig. 4b of Nolen 2020) before use.'])
-
 # ------------------------------------------------------------------ Euler / tensor helpers written into YAML
 def principal(eps2):
     a, b, c = eps2[0][0], eps2[0][1], eps2[1][1]

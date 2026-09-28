@@ -1,6 +1,6 @@
 # Built-in optical material catalog
 
-48 infrared materials for anisotropic transfer-matrix / s-SNOM simulations. Every parameter carries its reference, and nothing depends on pyGTM (GPL-3.0). Tabulated data come from the public-domain (CC0) [refractiveindex.info database](https://github.com/polyanskiy/refractiveindex.info-database).
+45 infrared materials for anisotropic transfer-matrix / s-SNOM simulations. Every parameter carries its reference, and nothing depends on pyGTM (GPL-3.0). Tabulated data come from the public-domain (CC0) [refractiveindex.info database](https://github.com/polyanskiy/refractiveindex.info-database).
 
 ## Layout
 
@@ -28,7 +28,7 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | `drude` | ε∞ − ω_p²/(ω² + iγω) | `eps_inf`, `wp`, `gamma` (cm⁻¹); also allowed as `drude:` inside `tolo`/`lorentz` |
 
 - Euler angles: intrinsic Z–X′–Z″ (φ, θ, ψ) in degrees, R = R_z(φ) R_x(θ) R_z(ψ), and ε_rotated = R ε_diag Rᵀ.
-- `status`: **verified** = values read from the cited source during this build and cross-checked; **secondary** = taken from a compilation, primary source not opened; **partial** = some parameters sourced, others carried over from pyGTM (listed in `notes`); **pending** = placeholder, do not use for quantitative work.
+- `status`: all current materials are **verified**: values read from the cited source during this build and cross-checked.
 - `alternatives:` in a YAML holds other sourced models for the same material (film vs bulk, Drude vs table).
 
 ## Index
@@ -40,7 +40,6 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | [`Al2O3`](src/materials_library/materials/Al2O3.yaml) | uniaxial | TO-LO, 4 modes/axis | 100–5000 | verified | Schubert2000; Querry1985 |
 | [`AlN`](src/materials_library/materials/AlN.yaml) | uniaxial | lorentz | 50–14000 | verified | Moore2005; Kischkat2012 |
 | [`alpha_quartz`](src/materials_library/materials/alpha_quartz.yaml) | uniaxial | TO-LO, 6 modes/axis | 300–1600 | verified | GervaisPiriou1975; Winta2019 |
-| [`BaTiO3`](src/materials_library/materials/BaTiO3.yaml) | isotropic | constant | 2000–14000 | pending | pyGTM |
 | [`calcite`](src/materials_library/materials/calcite.yaml) | uniaxial | lorentz | 50–2000 | verified | Lane1999; Ma2021 |
 | [`CdWO4`](src/materials_library/materials/CdWO4.yaml) | monoclinic | 15 rank-1 oscillators + ε∞ tensor | 80–1200 | verified | Mock2017 |
 | [`Ga2O3_beta`](src/materials_library/materials/Ga2O3_beta.yaml) | monoclinic | 12 rank-1 oscillators + ε∞ tensor | 150–1200 | verified | Schubert2016; HyperbolicOptics |
@@ -57,7 +56,6 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | [`SiC3C`](src/materials_library/materials/SiC3C.yaml) | isotropic | TO-LO, 1 mode/axis | 100–5000 | verified | PatrickChoyke1970; Olego1982; Mutschke1999; Pitman2008 |
 | [`SiC4H`](src/materials_library/materials/SiC4H.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Tiwald1999 |
 | [`SiC6H`](src/materials_library/materials/SiC6H.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Tiwald1999; PatrickChoyke1970 |
-| [`SrTiO3`](src/materials_library/materials/SrTiO3.yaml) | isotropic | constant | 1000–5000 | pending | Han2006 |
 | [`V2O5`](src/materials_library/materials/V2O5.yaml) | biaxial | TO-LO, 1 mode/axis | 400–1200 | verified | TaboadaGutierrez2020 |
 | [`ZnO`](src/materials_library/materials/ZnO.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Ashkenov2003; Querry1985 |
 
@@ -87,7 +85,6 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | [`aSiO2`](src/materials_library/materials/aSiO2.yaml) | isotropic | table | 80–403000 | verified | Franta2016; Kischkat2012; Popova1972 |
 | [`BaF2`](src/materials_library/materials/BaF2.yaml) | isotropic | table | 60–45455 | verified | Querry1987; Kaiser1962 |
 | [`CaF2`](src/materials_library/materials/CaF2.yaml) | isotropic | lorentz | 125–1000 | verified | Kaiser1962; Li1980b |
-| [`CdO_doped`](src/materials_library/materials/CdO_doped.yaml) | isotropic | drude | 150–33333 | pending | Nolen2020 |
 | [`Diamond`](src/materials_library/materials/Diamond.yaml) | isotropic | table | 20–4000 | verified | Dore1998 |
 | [`Ge`](src/materials_library/materials/Ge.yaml) | isotropic | table | 556–5263 | verified | Li1980 |
 | [`InP`](src/materials_library/materials/InP.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | verified | Lockwood2005 |

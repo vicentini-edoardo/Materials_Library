@@ -20,7 +20,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent
 
 def names() -> tuple[str, ...]:
-    """Canonical built-in material names, including entries marked pending."""
+    """Canonical built-in material names."""
     return tuple(sorted((path.stem for path in (ROOT / "materials").glob("*.yaml")), key=str.casefold))
 
 def load(name: str) -> dict:

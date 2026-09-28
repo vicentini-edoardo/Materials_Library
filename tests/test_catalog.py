@@ -6,9 +6,14 @@ from materials_library import eps_tensor, load, names, sheet_conductivity
 
 def test_all_packaged_materials_evaluate():
     catalog = names()
-    assert len(catalog) == 48
+    assert len(catalog) == 45
+    assert "BaTiO3" not in catalog
+    assert "SrTiO3" not in catalog
+    assert "CdO_doped" not in catalog
     for name in catalog:
         material = load(name)
+        assert material["status"] != "pending", name
+        assert all(ref["key"].casefold() != "pygtm" for ref in material["references"]), name
         lo, hi = material["valid_range_cm1"]
         frequency = np.array([max(lo, 1), (lo + hi) / 2])
         if material["tensor"] == "sheet":
