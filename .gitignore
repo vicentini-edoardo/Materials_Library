@@ -4,3 +4,7 @@ __pycache__/
 build/
 dist/
 .venv/
+
+# Supplied source snapshot kept beside this repository
+README_2.md
+material_library 2/
