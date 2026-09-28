@@ -51,6 +51,8 @@ R = {
  'Goldberg2001': dict(citation='Yu. Goldberg, in Properties of Advanced Semiconductor Materials (Wiley 2001) — via Ioffe NSM (AlN)', url='https://www.ioffe.ru/SVA/NSM/Semicond/AlN/optic.html'),
  'Davydov1999': dict(citation='V. Yu. Davydov et al. (1999) — via Ioffe NSM (InN)', url='https://www.ioffe.ru/SVA/NSM/Semicond/InN/optic.html'),
  'Tansley1994': dict(citation='T. L. Tansley (1994), eps_inf of InN from LST — via Ioffe NSM', url='https://www.ioffe.ru/SVA/NSM/Semicond/InN/optic.html'),
+ 'Kasic2002': dict(citation='A. Kasic, M. Schubert, Y. Saito, Y. Nanishi, G. Wagner, Effective electron mass and phonon modes in n-type hexagonal InN, Phys. Rev. B 65, 115206 (2002)', doi='10.1103/PhysRevB.65.115206'),
+ 'Reparaz2018': dict(citation='J. S. Reparaz et al., Comparative study of the pressure dependence of optical-phonon transverse-effective charges and linewidths in wurtzite InN, Phys. Rev. B 98, 165204 (2018)', doi='10.1103/PhysRevB.98.165204'),
  'Falkovsky2008': dict(citation='L. A. Falkovsky, Optical properties of graphene, J. Phys.: Conf. Ser. 129, 012004 (2008)', url='https://arxiv.org/abs/0806.3663'),
  'Low2014': dict(citation='T. Low et al., Plasmons and screening in monolayer and multilayer black phosphorus, Phys. Rev. Lett. 113, 106802 (2014)', url='https://arxiv.org/abs/1404.4035'),
  'Han2006': dict(citation='J. Han et al., Dielectric response of soft mode in ferroelectric SrTiO3, arXiv:cond-mat/0612296', url='https://arxiv.org/abs/cond-mat/0612296'),
@@ -147,9 +149,10 @@ add('AlN', tensor='uniaxial', status='partial', axes=uni(tolo(4.6, [(673.0, 916.
 add('GaN', tensor='uniaxial', status='partial', axes=uni(tolo(5.35, [(561.0, 743.0, 4.0)]), tolo(5.35, [(533.0, 735.0, 4.0)])), valid_range_cm1=[100, 5000],
     references=refs('Barker1973', 'Ratchford2019', 'Ioffe', 'pyGTM'),
     notes=['eps_inf = 5.35 (Barker & Ilegems; old 5.04/5.01). TO/LO from Raman (Azuhata/McNeil via Ratchford 2019). gamma = 4 cm-1 from pyGTM (unverified).'])
-add('InN', tensor='uniaxial', status='partial', axes=uni(tolo(8.4, [(476.0, 593.0, 4.4)]), tolo(8.4, [(447.0, 586.0, 4.4)])), valid_range_cm1=[100, 5000],
-    references=refs('Davydov1999', 'Tansley1994', 'pyGTM'),
-    notes=['Fixes the pyGTM bug (eps_inf multiplied by c*100). Reported eps_inf ranges 5.8-9.3; 8.4 is the LST value. gamma from pyGTM (unverified).'])
+add('InN', tensor='uniaxial', status='verified', axes=uni(tolo(6.7, [(477.1, 601.4, 4.4)]), tolo(6.7, [(450.5, 588.1, 4.4)])), valid_range_cm1=[100, 5000],
+    references=refs('Kasic2002', 'Reparaz2018'),
+    notes=['E_inf = 6.7 +/- 0.1, E1(TO) = 477.1 +/- 0.6 cm-1, and gamma = 4.4 +/- 1.0 cm-1 from Kasic et al. 2002; the measured gamma is used on both axes.',
+           'A1(TO) = 450.5, E1(LO) = 601.4, and A1(LO) = 588.1 cm-1 from Reparaz et al. 2018.'])
 for iso, (eo, to, lo, go, ee, te, le, ge) in {
         'natural': (4.9, 1360, 1614, 7, 2.95, 760, 825, 3),
         '11B':     (5.32, 1359.8, 1608.7, 2.1, 3.15, 755, 814, 1),

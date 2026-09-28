@@ -1,4 +1,5 @@
 __pycache__/
+.DS_Store
 .pytest_cache/
 *.egg-info/
 build/
@@ -8,3 +9,4 @@ dist/
 # Supplied source snapshot kept beside this repository
 README_2.md
 material_library 2/
+figures/

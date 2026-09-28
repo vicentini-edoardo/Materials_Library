@@ -51,7 +51,7 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | [`hBN_10B`](src/materials_library/materials/hBN_10B.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Giles2018 |
 | [`hBN_11B`](src/materials_library/materials/hBN_11B.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Giles2018 |
 | [`InAs`](src/materials_library/materials/InAs.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | verified | Lockwood2005 |
-| [`InN`](src/materials_library/materials/InN.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | partial | Davydov1999; Tansley1994; pyGTM |
+| [`InN`](src/materials_library/materials/InN.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Kasic2002; Reparaz2018 |
 | [`MgO`](src/materials_library/materials/MgO.yaml) | isotropic | lorentz | 100–27778 | verified | Jasperse1966; Stephens1952 |
 | [`MoO3`](src/materials_library/materials/MoO3.yaml) | biaxial | TO-LO, 3 modes/axis | 400–1200 | verified | AlvarezPerez2020 |
 | [`SiC3C`](src/materials_library/materials/SiC3C.yaml) | isotropic | TO-LO, 1 mode/axis | 100–5000 | verified | PatrickChoyke1970; Olego1982; Mutschke1999; Pitman2008 |
@@ -129,15 +129,6 @@ Crystal frames: Ga₂O₃ x ∥ c, z ∥ b, y ⊥ b, c (α measured from c). CdW
 Checks: Ga₂O₃ reproduces the paper's ε_DC (11.51, 11.89, 11.15, xy −0.05) within 0.03. CdWO₄ reproduces ε_DC,zz = 11.57 and ε_DC,xy = 1.05. Its xx/yy (15.66 / 16.51) differ from the paper's 16.16 / 16.01, but the published Table IV says those were extrapolated from the measured spectra, and det(ε_DC), the quantity the generalized LST relation tests, agrees to 0.1 %. The published CdWO₄ angles differ from the arXiv ones by 180° for four modes, which is the same dipole direction. The CdWO₄ default is the harmonic (passive) model; the paper's anharmonic broadenings are stored as `anharmonic_paper` (rename to `anharmonic` to enable them, at the cost of a small negative Im ε_zz near 271 cm⁻¹).
 
 For uniaxial crystals (calcite, quartz, hBN, sapphire…) the tensor is diagonal in the crystal frame at every frequency. A tilted optic axis, as in the ghost-polariton calcite cut, is just one global rotation of the whole tensor: an optic axis at polar angle θ from the surface normal (lab z) and in-plane azimuth φ_az (from lab x) is Euler (φ_az + 90°, θ, 0), because R ẑ = (sin θ cos φ_az, sin θ sin φ_az, cos θ) for that choice.
-
-## What changed from the pyGTM library
-
-- **Bugs removed:** InN ε∞ ×c·100; SiC6H‑z 3‑phonon formula (ε → 2ε∞); Ag Drude damping 2π too large; the Au/Ag table-to-Drude switch at 1.93 µm; hBN‑z LO 811 → 825 cm⁻¹.
-- **Old sources identified:** GaN = Kasic 2000 sample A and AlN = Moore 2005 (neither was cited in pyGTM). Both are kept, now with the papers' measured damping; for AlN, pyGTM's γ = 2.2 cm⁻¹ was half the correct value (Moore's formula uses 2Γ).
-- **Values corrected:** Si 13.0 → Chandler‑Horowitz table (11.68); GaAs/GaP/InAs → Lockwood 2005 (InAs ε∞ 12.9 → 11.91); SiC4H → Tiwald's 4H fit (TO∥ 782, the old 788/964 were 6H values); MoO₃ ε∞ 4.0/5.2/2.4 → 5.78/6.07/4.47 plus 2 extra x modes; sapphire unrounded, with its γ mix‑up fixed; α‑quartz and calcite from the original papers.
-- **Passive defaults:** where a paper's parameters give Im ε < 0 somewhere (Lockwood's γ_LO < γ_TO; CdWO₄ anharmonic terms), the default model uses the passive variant and the exact paper values sit under `alternatives` (or `anharmonic_paper`).
-- **BaTiO₃:** the old ε∞ = 2.356 is identical to the α‑quartz ordinary ε∞, probably a copy error. It is now a pending placeholder.
-- **New:** SiC3C, hBN ¹⁰B/¹¹B, α‑V₂O₅, β‑Ga₂O₃, CdWO₄, α‑quartz, calcite, ZnO (uniaxial), InP, InSb, AlAs, LiF, CaF₂, KBr, ZnSe, Si₃N₄ film, VO₂ (both phases), GST (both phases), PMMA, graphene, black phosphorus, CdO (recipe only).
 
 ## Still to source
 

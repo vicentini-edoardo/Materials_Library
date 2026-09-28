@@ -1,11 +1,11 @@
 # Materials Library
 
-A built-in catalog of 48 sourced infrared material definitions for SNOM_calculator and Multilayer_anisotropic_Transfer_Matrix. It has no dependency on either app or pyGTM. The source data and model details are in [CATALOG.md](CATALOG.md).
+A built-in catalog of 48 sourced infrared material definitions. The source data and model details are in [CATALOG.md](CATALOG.md).
 
 ## Install and use
 
 ```bash
-python -m pip install -e .
+python -m pip install .
 ```
 
 ```python
@@ -24,8 +24,27 @@ Frequency is wavenumber in cm⁻¹. Bulk tensors use the material crystal frame 
 `tools/build_library.py` is the source of truth for definitions and references. Edit it, then regenerate the YAML and run the package check:
 
 ```bash
+python -m pip install -e ".[test]"
 python tools/build_library.py
 python -m pytest
 ```
 
 The 25 CSV tables are committed under `src/materials_library/data/` with source headers. Changes to those tables should retain their source and be reviewed against it. The package includes definitions and evaluation only; each app decides which materials its solver supports and how to display them. Pin a released version in each app and update after checking numerical output.
+
+## License
+
+Code and package structure: [MIT](LICENSE).
+
+### Data provenance and licensing
+
+The numeric material values (refractive indices, dielectric functions, sheet
+conductivities, etc.) in this repository are not original data — they are
+extracted from published scientific literature. Facts and measured values are
+not copyrightable, so no license is asserted over the values themselves;
+rights to the underlying research, if any, remain with the original authors
+and publishers. The MIT license above covers only this repository's code and
+the compilation/formatting of the data, not the data's content.
+
+Each material's source paper is recorded in [CATALOG.md](CATALOG.md) and in
+the CSV table headers. If you use a specific material's values in your own
+work, cite the original source paper, not this repository.
