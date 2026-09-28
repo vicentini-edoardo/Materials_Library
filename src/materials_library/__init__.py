@@ -12,6 +12,7 @@ Conventions (see README.md):
         R = Rz(phi) @ Rx(theta) @ Rz(psi),   eps_lab = R @ eps_diag @ R.T
 """
 from __future__ import annotations
+from functools import lru_cache
 from pathlib import Path
 import numpy as np
 import yaml
@@ -35,13 +36,17 @@ def euler_zxz(phi, theta, psi):
     Rx = lambda a: np.array([[1.0, 0, 0], [0, np.cos(a), -np.sin(a)], [0, np.sin(a), np.cos(a)]])
     return Rz(p) @ Rx(t) @ Rz(s)
 
+@lru_cache(maxsize=32)
+def _read_table(filename: str) -> np.ndarray:
+    return np.loadtxt(ROOT / filename, delimiter=",", comments="#")
+
 # ---------------------------------------------------------------- scalar models
 def _scalar(model: dict, w: np.ndarray) -> np.ndarray:
     t = model["type"]; w = np.asarray(w, float)
     if t == "constant":
         return np.full(w.shape, complex(model["eps"]))
     if t == "table":
-        d = np.loadtxt(ROOT / model["file"], delimiter=",", comments="#")
+        d = _read_table(model["file"])
         wc = np.clip(w, d[0, 0], d[-1, 0])
         return np.interp(wc, d[:, 0], d[:, 1]) + 1j * np.interp(wc, d[:, 0], d[:, 2])
     if t == "tolo":  # factorized TO-LO (Berreman-Unterwald-Lowndes)

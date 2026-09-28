@@ -29,3 +29,21 @@ def test_model_and_table_values_and_unknown_name():
         load("../hBN")
     with pytest.raises(ValueError, match="2D sheet"):
         eps_tensor(load("graphene"), [800])
+
+
+def test_table_is_loaded_once_for_repeated_evaluations(monkeypatch):
+    import materials_library as library
+
+    library._read_table.cache_clear()
+    original = np.loadtxt
+    calls = []
+
+    def counting_loadtxt(*args, **kwargs):
+        calls.append(args[0])
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(np, "loadtxt", counting_loadtxt)
+    material = load("Au")
+    eps_tensor(material, [900])
+    eps_tensor(material, [1000])
+    assert len(calls) == 1
