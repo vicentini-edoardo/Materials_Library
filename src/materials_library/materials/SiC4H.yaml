@@ -9,17 +9,17 @@ axes:
     type: tolo
     eps_inf: 6.6
     modes:
-    - {to: 797.0, lo: 970.0, gamma: 1.4}
+    - {to: 797.0, lo: 970.0, gamma: 6}
   yy:
     type: tolo
     eps_inf: 6.6
     modes:
-    - {to: 797.0, lo: 970.0, gamma: 1.4}
+    - {to: 797.0, lo: 970.0, gamma: 6}
   zz:
     type: tolo
     eps_inf: 6.9
     modes:
-    - {to: 782.0, lo: 964.0, gamma: 1.4}
+    - {to: 782.0, lo: 964.0, gamma: 6}
 notes: ['Tiwald Table I sample 9, undoped 4H epilayer (N ~ 0): eps_inf 6.6/6.9, TO 797/782 (fixed), LO 970/964, Gamma 1.4 cm-1.', 'Tiwald Eq. 3: eps_inf [1 + (w_LO^2
     - w_TO^2)/(w_TO^2 - w^2 - i w Gamma)] = TO-LO form with gamma_TO = gamma_LO = Gamma.', 'The old repo values (797/970, 788/964) are Tiwald''s quoted literature
     values for 6H, not 4H.']
