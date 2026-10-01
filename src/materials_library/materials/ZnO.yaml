@@ -33,7 +33,10 @@ alternatives:
       modes:
       - {to: 380.0, lo: 574.5, gamma: 10.0}
     note: PLD film on c-sapphire
-  pellet_Querry1985: {type: table, file: data/ZnO_Querry1985_pellet.csv}
+  pellet_Querry1985:
+    type: table
+    file: data/ZnO_Querry1985_pellet.csv
+    valid_range_cm1: [180.0, 47619.0]
 notes: ['Bulk sample: E1 TO/LO 408.2/592.1 (IRSE), A1 TO 379 (Raman), A1 LO 577.1 (IRSE), eps_inf 3.70/3.78 from LST with measured eps_0 7.77/8.91, gamma 13 cm-1
     (single Lorentzian broadening).']
 references:

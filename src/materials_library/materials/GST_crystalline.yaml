@@ -2,8 +2,11 @@
 name: GST_crystalline
 status: verified
 tensor: isotropic
-valid_range_cm1: [309, 28549]
+valid_range_cm1: [309, 28548.6]
 axes:
-  iso: {type: table, file: data/GST_Frantz2023_crystal.csv}
+  iso:
+    type: table
+    file: data/GST_Frantz2023_crystal.csv
+    valid_range_cm1: [308.585, 28548.6]
 references:
 - {key: Frantz2023, citation: 'J. A. Frantz et al., Opt. Mater. Express 13, 3631 (2023) (Ge2Sb2Te5)'}

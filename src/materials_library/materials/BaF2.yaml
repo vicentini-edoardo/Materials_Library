@@ -2,9 +2,13 @@
 name: BaF2
 status: verified
 tensor: isotropic
-valid_range_cm1: [60, 45455]
+valid_range_cm1: [60, 45454.5]
 axes:
-  iso: {type: table, file: data/BaF2_Querry1987.csv}
+  iso:
+    type: table
+    file: data/BaF2_Querry1987.csv
+    valid_range_cm1: [60.0, 45454.5]
+    note: Zero-loss rows reflect absent k data or source zeros; they do not establish a measured absorption floor.
 alternatives:
   lorentz_Kaiser1962:
     type: lorentz

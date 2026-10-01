@@ -11,7 +11,11 @@ axes:
     - {w0: 257.0, strength: 4.2, gamma: 4.63}
     - {w0: 328.0, strength: 0.4, gamma: 114.8}
 alternatives:
-  Li1980: {type: table, file: data/CaF2_Li1980.csv}
+  Li1980:
+    type: table
+    file: data/CaF2_Li1980.csv
+    valid_range_cm1: [833.333, 66666.7]
+    note: Zero-loss rows reflect absent k data or source zeros; they do not establish a measured absorption floor.
 notes: [Kaiser oscillator model for the phonon region; use the Li 1980 table above 833 cm-1 (transparent range)., Exists in pyGTM but was not exposed in the old catalog.]
 references:
 - {key: Kaiser1962, citation: 'W. Kaiser, W. G. Spitzer, R. H. Kaiser, L. E. Howarth, Phys. Rev. 127, 1950 (1962)', doi: 10.1103/PhysRev.127.1950, url: 'https://github.com/polyanskiy/refractiveindex.info-scripts'}

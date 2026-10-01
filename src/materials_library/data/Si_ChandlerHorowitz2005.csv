@@ -1,3 +1,4 @@
+# Duplicate 1508 cm-1 row removed; retained last source row to preserve interpolation at the knot.
 # source: refractiveindex.info database (CC0), main/Si/nk/Chandler-Horowitz.yml
 # freq_cm1,eps_real,eps_imag
 430,11.675,0.000785881
@@ -875,7 +876,6 @@
 1502.4,11.6958,3.25176e-05
 1504,11.6959,3.01637e-05
 1506,11.6959,3.01638e-05
-1508,11.696,3.01639e-05
 1508,11.696,3.01591e-05
 1510,11.6961,2.71544e-05
 1512,11.6961,2.71545e-05

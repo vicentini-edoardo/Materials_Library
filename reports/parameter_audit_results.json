@@ -1,0 +1,660 @@
+{
+  "materials": [
+    {
+      "name": "Ag",
+      "finite": true,
+      "min_loss_eigenvalue": 0.22545568467418295,
+      "frequency_cm1": 27779.1545668,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "Al2O3",
+      "finite": true,
+      "min_loss_eigenvalue": 0.00440055318964435,
+      "frequency_cm1": 100.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "AlAs",
+      "finite": true,
+      "min_loss_eigenvalue": 8.806416978291537e-06,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "AlN",
+      "finite": true,
+      "min_loss_eigenvalue": 1.857065856662044e-05,
+      "frequency_cm1": 11348.8025,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "alpha_quartz",
+      "finite": true,
+      "min_loss_eigenvalue": 0.017980819325367988,
+      "frequency_cm1": 1600.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "aSiO2",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0,
+      "frequency_cm1": 16700.45,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "Au",
+      "finite": true,
+      "min_loss_eigenvalue": 1.095360312333013,
+      "frequency_cm1": 14492.673168299998,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "BaF2",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0,
+      "frequency_cm1": 60.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "black_phosphorus",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0,
+      "frequency_cm1": 10.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "CaF2",
+      "finite": true,
+      "min_loss_eigenvalue": 0.00757464703196822,
+      "frequency_cm1": 1000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "calcite",
+      "finite": true,
+      "min_loss_eigenvalue": 0.00021166953153491823,
+      "frequency_cm1": 2000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "CdWO4",
+      "finite": true,
+      "min_loss_eigenvalue": 0.015103718931589172,
+      "frequency_cm1": 1200.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "Diamond",
+      "finite": true,
+      "min_loss_eigenvalue": 0.000149525,
+      "frequency_cm1": 4000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "Ga2O3_beta",
+      "finite": true,
+      "min_loss_eigenvalue": 0.007274647720097795,
+      "frequency_cm1": 1200.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "GaAs",
+      "finite": true,
+      "min_loss_eigenvalue": 2.9008530453731886e-06,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "GaN",
+      "finite": true,
+      "min_loss_eigenvalue": 0.006256479654566949,
+      "frequency_cm1": 300.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "GaP",
+      "finite": true,
+      "min_loss_eigenvalue": 5.379320880789353e-06,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "Ge",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0,
+      "frequency_cm1": 556.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "graphene",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0,
+      "frequency_cm1": 10.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "GST_amorphous",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0,
+      "frequency_cm1": 338.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "GST_crystalline",
+      "finite": true,
+      "min_loss_eigenvalue": 0.699915072041216,
+      "frequency_cm1": 4310.5513200000005,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "hBN",
+      "finite": true,
+      "min_loss_eigenvalue": 7.643267412498443e-06,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "hBN_10B",
+      "finite": true,
+      "min_loss_eigenvalue": 2.056112934061887e-06,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "hBN_11B",
+      "finite": true,
+      "min_loss_eigenvalue": 2.442921153178492e-06,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "InAs",
+      "finite": true,
+      "min_loss_eigenvalue": 8.665761084517567e-06,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "InN",
+      "finite": true,
+      "min_loss_eigenvalue": 3.219979502182175e-05,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "InP",
+      "finite": true,
+      "min_loss_eigenvalue": 5.839711532322306e-06,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "InSb",
+      "finite": true,
+      "min_loss_eigenvalue": 2.5110328735127335e-06,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "KBr",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0,
+      "frequency_cm1": 238.095,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "KRS5",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0,
+      "frequency_cm1": 254.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "LiF",
+      "finite": true,
+      "min_loss_eigenvalue": 0.00011479133989309508,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "MgO",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0013890476624446862,
+      "frequency_cm1": 2000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "MoO3",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0004634524126865544,
+      "frequency_cm1": 400.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "PMMA",
+      "finite": true,
+      "min_loss_eigenvalue": 0.00013077377624676868,
+      "frequency_cm1": 4000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "Si",
+      "finite": true,
+      "min_loss_eigenvalue": 1.52535e-05,
+      "frequency_cm1": 1536.0162028221646,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "Si3N4_film",
+      "finite": true,
+      "min_loss_eigenvalue": 0.000147727,
+      "frequency_cm1": 6220.15,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "SiC3C",
+      "finite": true,
+      "min_loss_eigenvalue": 5.126973202016052e-05,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "SiC4H",
+      "finite": true,
+      "min_loss_eigenvalue": 0.00020510840434208874,
+      "frequency_cm1": 4000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "SiC6H",
+      "finite": true,
+      "min_loss_eigenvalue": 9.347167898855021e-05,
+      "frequency_cm1": 4000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "V2O5",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0006098821558550629,
+      "frequency_cm1": 400.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "vacuum",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0,
+      "frequency_cm1": 1.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "VO2_insulating",
+      "finite": true,
+      "min_loss_eigenvalue": 0.488318,
+      "frequency_cm1": 486.99749713912934,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "VO2_metallic",
+      "finite": true,
+      "min_loss_eigenvalue": 1.8412911927107063,
+      "frequency_cm1": 14706.039999999999,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "ZnO",
+      "finite": true,
+      "min_loss_eigenvalue": 7.173856552491392e-05,
+      "frequency_cm1": 5000.0,
+      "negative_loss_interval_cm1": null
+    },
+    {
+      "name": "ZnSe",
+      "finite": true,
+      "min_loss_eigenvalue": 0.0,
+      "frequency_cm1": 2380.2629295162214,
+      "negative_loss_interval_cm1": null
+    }
+  ],
+  "tables": [
+    {
+      "file": "Ag_Yang2015.csv",
+      "rows": 519,
+      "range_cm1": [
+        401.284,
+        37037.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "Al2O3_Querry1985_e.csv",
+      "rows": 612,
+      "range_cm1": [
+        180.0,
+        47619.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 9,
+      "zero_loss_fraction": 0.0016339869281045752
+    },
+    {
+      "file": "Al2O3_Querry1985_o.csv",
+      "rows": 612,
+      "range_cm1": [
+        180.0,
+        47619.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 11,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "AlN_Kischkat2012_film.csv",
+      "rows": 1451,
+      "range_cm1": [
+        700.0,
+        6500.01
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "Au_Olmon2012_evap.csv",
+      "rows": 448,
+      "range_cm1": [
+        401.123,
+        33333.3
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "BaF2_Querry1987.csv",
+      "rows": 312,
+      "range_cm1": [
+        60.0,
+        45454.5
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.9230769230769231
+    },
+    {
+      "file": "CaF2_Li1980.csv",
+      "rows": 600,
+      "range_cm1": [
+        833.333,
+        66666.7
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 1.0
+    },
+    {
+      "file": "Diamond_Dore1998_CVD.csv",
+      "rows": 241,
+      "range_cm1": [
+        20.0,
+        4000.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "GST_Frantz2023_amorphous.csv",
+      "rows": 2114,
+      "range_cm1": [
+        337.519,
+        28548.6
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.7223273415326396
+    },
+    {
+      "file": "GST_Frantz2023_crystal.csv",
+      "rows": 2136,
+      "range_cm1": [
+        308.585,
+        28548.6
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "GaAs_Skauli2003.csv",
+      "rows": 600,
+      "range_cm1": [
+        588.235,
+        10309.3
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 1.0
+    },
+    {
+      "file": "Ge_Li1980_293K.csv",
+      "rows": 43,
+      "range_cm1": [
+        555.556,
+        5263.16
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 1.0
+    },
+    {
+      "file": "InAs_Lorimor1965.csv",
+      "rows": 600,
+      "range_cm1": [
+        319.489,
+        2702.7
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 1.0
+    },
+    {
+      "file": "KBr_Li1976.csv",
+      "rows": 600,
+      "range_cm1": [
+        238.095,
+        50000.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 1.0
+    },
+    {
+      "file": "KRS5_Rodney1956.csv",
+      "rows": 600,
+      "range_cm1": [
+        253.936,
+        17331.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 1.0
+    },
+    {
+      "file": "MgO_Stephens1952.csv",
+      "rows": 600,
+      "range_cm1": [
+        1851.85,
+        27777.8
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 1.0
+    },
+    {
+      "file": "Si3N4_Kischkat2012_film.csv",
+      "rows": 1451,
+      "range_cm1": [
+        700.0,
+        6500.01
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "Si_ChandlerHorowitz2005.csv",
+      "rows": 1184,
+      "range_cm1": [
+        430.0,
+        4000.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "VO2_Beaini2020_100C_film.csv",
+      "rows": 2451,
+      "range_cm1": [
+        400.0,
+        20000.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "VO2_Beaini2020_25C_film.csv",
+      "rows": 2451,
+      "range_cm1": [
+        400.0,
+        20000.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "ZnO_Querry1985_pellet.csv",
+      "rows": 611,
+      "range_cm1": [
+        180.0,
+        47619.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "ZnSe_Querry1987.csv",
+      "rows": 278,
+      "range_cm1": [
+        460.001,
+        20000.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.5107913669064749
+    },
+    {
+      "file": "aSiO2_Franta2016_fused.csv",
+      "rows": 3704,
+      "range_cm1": [
+        79.9099,
+        403275.0
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0826133909287257
+    },
+    {
+      "file": "aSiO2_Kischkat2012_film.csv",
+      "rows": 1451,
+      "range_cm1": [
+        700.0,
+        6500.01
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    },
+    {
+      "file": "aSiO2_Popova1972.csv",
+      "rows": 200,
+      "range_cm1": [
+        200.0,
+        1428.57
+      ],
+      "finite": true,
+      "nonincreasing_steps": 0,
+      "negative_loss_rows": 0,
+      "zero_loss_fraction": 0.0
+    }
+  ],
+  "generator_mismatches": [],
+  "legacy_differences": [
+    "Ag",
+    "AlAs",
+    "AlN",
+    "aSiO2",
+    "Au",
+    "BaF2",
+    "black_phosphorus",
+    "CaF2",
+    "calcite",
+    "CdWO4",
+    "Diamond",
+    "Ga2O3_beta",
+    "GaAs",
+    "GaN",
+    "GaP",
+    "Ge",
+    "graphene",
+    "GST_amorphous",
+    "GST_crystalline",
+    "InAs",
+    "InN",
+    "InP",
+    "InSb",
+    "KBr",
+    "KRS5",
+    "MgO",
+    "Si",
+    "Si3N4_film",
+    "SiC3C",
+    "SiC4H",
+    "SiC6H",
+    "V2O5",
+    "VO2_insulating",
+    "VO2_metallic",
+    "ZnO",
+    "ZnSe"
+  ]
+}

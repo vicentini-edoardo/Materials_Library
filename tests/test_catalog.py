@@ -1,7 +1,37 @@
 import numpy as np
 import pytest
+import runpy
+from pathlib import Path
 
 from materials_library import eps_tensor, load, names, sheet_conductivity
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_catalog_regeneration_preserves_definitions():
+    generated = runpy.run_path(str(ROOT / "tools/build_library.py"))["M"]
+    assert set(generated) == set(names())
+    for name in names():
+        assert load(name) == generated[name], name
+
+
+def test_default_bulk_models_are_passive_in_declared_range():
+    for name in names():
+        material = load(name)
+        if material["tensor"] == "sheet":
+            continue
+        lo, hi = material["valid_range_cm1"]
+        w = np.unique(np.r_[np.linspace(max(lo, 1), hi, 20001), np.geomspace(max(lo, 1), hi, 10000)])
+        response = eps_tensor(material, w)
+        loss = (response - response.conj().transpose(0, 2, 1)) / (2j)
+        assert np.linalg.eigvalsh(loss).min() >= -1e-8, name
+
+
+def test_tables_have_strictly_increasing_frequencies():
+    for path in (ROOT / "src/materials_library/data").glob("*.csv"):
+        data = np.loadtxt(path, delimiter=",", comments="#")
+        assert np.isfinite(data).all(), path.name
+        assert np.all(np.diff(data[:, 0]) > 0), path.name
 
 
 def test_all_packaged_materials_evaluate():

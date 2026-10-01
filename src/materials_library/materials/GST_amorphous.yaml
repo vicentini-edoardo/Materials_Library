@@ -2,8 +2,12 @@
 name: GST_amorphous
 status: verified
 tensor: isotropic
-valid_range_cm1: [338, 28549]
+valid_range_cm1: [338, 28548.6]
 axes:
-  iso: {type: table, file: data/GST_Frantz2023_amorphous.csv}
+  iso:
+    type: table
+    file: data/GST_Frantz2023_amorphous.csv
+    valid_range_cm1: [337.519, 28548.6]
+    note: Zero-loss rows reflect absent k data or source zeros; they do not establish a measured absorption floor.
 references:
 - {key: Frantz2023, citation: 'J. A. Frantz et al., Opt. Mater. Express 13, 3631 (2023) (Ge2Sb2Te5)'}

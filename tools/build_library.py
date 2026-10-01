@@ -88,10 +88,10 @@ add('Ag', tensor='isotropic', status='verified', axes=dict(iso=tab('Ag_Yang2015'
                       note='omega_p = 8.9 eV, tau = 17 fs -> gamma = 1/(2 pi c tau) = 312 cm-1. pyGTM used 1/tau as if in Hz (6.3x too lossy).')),
     references=refs('Yang2015'), notes=['Tabulated data now used over the full 0.27-25 um range (pyGTM used it only below 1.93 um).'])
 add('Si', tensor='isotropic', status='verified', axes=dict(iso=tab('Si_ChandlerHorowitz2005')), valid_range_cm1=[430, 4000],
-    references=refs('ChandlerHorowitz2005'), notes=['Intrinsic Si, eps ~ 11.68 at 1000 cm-1 (old constant 13.0 was 11% high). Use the doping option for doped wafers.'])
+    references=refs('ChandlerHorowitz2005'), notes=['Intrinsic Si, eps ~ 11.68 at 1000 cm-1 (old constant 13.0 was 11% high). Doped wafers require a specimen-specific Drude contribution; no doping option is exposed by the evaluator.'])
 add('Ge', tensor='isotropic', status='verified', axes=dict(iso=tab('Ge_Li1980_293K')), valid_range_cm1=[556, 5263], references=refs('Li1980'))
 add('Diamond', tensor='isotropic', status='verified', axes=dict(iso=tab('Diamond_Dore1998_CVD')), valid_range_cm1=[20, 4000], references=refs('Dore1998'),
-    notes=['Polycrystalline CVD diamond. eps = 5.65 in the LWIR; the 2.5-3 um region of this dataset is anomalously high (6.08), prefer constant 5.65 there.'])
+    notes=['Polycrystalline CVD diamond. eps = 5.65 in the LWIR; the 2.5-3 um region reaches 6.08; retain the source data and assess specimen dependence before replacing it.'])
 add('MgO', tensor='isotropic', status='partial', axes=dict(iso=tab('MgO_Stephens1952')), valid_range_cm1=[1852, 27778],
     references=refs('Stephens1952', 'Jasperse1966'),
     notes=['Only the transparent range is sourced. The reststrahlen band (TO ~ 400 cm-1) needs the Jasperse 1966 oscillator fit, not yet extracted.'])
@@ -135,7 +135,7 @@ add('GST_crystalline', tensor='isotropic', status='verified', axes=dict(iso=tab(
 # ============================================================= polar crystals (TO-LO)
 add('SiC3C', tensor='isotropic', status='verified', axes=dict(iso=tolo(6.52, [(796.2, 972.2, 3.0)])), valid_range_cm1=[100, 5000],
     references=refs('PatrickChoyke1970', 'Olego1982', 'Mutschke1999', 'Pitman2008'),
-    notes=['LST check: 6.52*(972.2/796.2)^2 = 9.72 = measured eps_DC.', 'gamma is sample dependent: 1-3 cm-1 bulk crystals (Mutschke), ~6 cm-1 CVD films on Si (Pitman).'])
+    notes=['LST check: 6.52*(972.2/796.2)^2 = 9.72 = measured eps_DC.', 'gamma = 3 cm-1 is a modelling choice. Mutschke discusses ad hoc narrow damping; Pitman reports widths around 5-6 cm-1 also for crystals. Damping depends on specimen and convention.'])
 add('SiC4H', tensor='uniaxial', status='partial', axes=uni(tolo(6.52, [(797.0, 970.0, 3.75)]), tolo(6.70, [(788.0, 964.0, 3.75)])), valid_range_cm1=[100, 5000],
     references=refs('Tiwald1999', 'PatrickChoyke1970', 'pyGTM'),
     notes=['perp TO/LO from Tiwald 1999 (as quoted); parallel TO/LO and gamma carried over from the old repo definition (unverified).', 'eps_inf: Ioffe recommends the 6H values for 4H.'])
@@ -201,7 +201,7 @@ add('Ga2O3_beta', tensor='monoclinic', status='verified', valid_range_cm1=[150, 
            'Bu alpha (paper) is measured from x (= c) towards y; Euler = (alpha, 0, 0). Au modes lie along z = b: Euler = (0, 90, 90).',
            'Check: eps_DC reproduced as xx 11.51, yy 11.90, zz 11.12, xy -0.05 vs paper 11.51, 11.89, 11.15, -0.05.',
            'eps_inf column order (xx 3.89, yy 2.90, zz 3.87) confirmed by that LST check; the paper text has a typo.',
-           'hyperbolic_optics ships a different Ga2O3 set (eps_inf xx 3.75, yy 3.21, xy -0.08, some A and alpha differ); origin unclear, not used.'])
+           'The published PRB fit has eps_inf xx 3.75, yy 3.21, zz 3.71, xy -0.08 and revised oscillators in x parallel a. This default follows the earlier preprint in x parallel c; do not mix their coefficients or frames.'])
 cd_bu = [mono_osc(A, t, g, a, G) for A, t, g, a, G in zip([908, 1018, 279, 645, 326, 236, 294, 236], [779.5, 549.0, 450.6, 276.3, 265.2, 227.3, 149.1, 98.1],
                                                          [15.0, 15.3, 12.5, 11.3, 12.0, 5.0, 5.7, 3.5], [24.3, -66.9, 180.8, 65.6, -98.1, -52.4, 145.1, 18.9],
                                                          [31, -22, -17, -67, 88, 7, -27, 70])]
@@ -331,6 +331,51 @@ add('MgO', tensor='isotropic', status='verified', valid_range_cm1=[100, 27778], 
            'Above ~2000 cm-1 the Stephens & Malitson table (eps 2.6-2.97) is more accurate than the constant eps_inf.'])
 add('LiF', tensor='isotropic', status='verified', valid_range_cm1=[100, 5000], references=refs('Jasperse1966'),
     axes=dict(iso=sk(1.90, [(306, 6.80, 0.0600), (503, 0.110, 0.180)])), notes=['295 K row of Jasperse Table I.'])
+# --- Corrections from the 2026-10-01 literature and numerical audit -----------------
+# Preserve the packaged broader-loss 4H model; expose the narrow experimental fit explicitly.
+M['SiC4H']['alternatives'] = dict(Tiwald1999_sample9=dict(
+    **uni(tolo(6.6, [(797.0, 970.0, 1.4)]), tolo(6.9, [(782.0, 964.0, 1.4)])),
+    valid_range_cm1=[700, 4000], note='Sample 9 lattice fit, Gamma = 1.4 cm-1, carrier density fixed to zero. Multiphonon absorption is omitted.'))
+M['SiC4H']['axes'] = uni(tolo(6.6, [(797.0, 970.0, 6.0)]), tolo(6.9, [(782.0, 964.0, 6.0)]))
+M['SiC4H']['notes'].insert(0, 'Default Gamma = 6 cm-1 is a broader-loss modelling assumption, not the Tiwald sample-9 measurement. The exact narrow lattice fit is an alternative.')
+for nm in ('SiC4H', 'SiC6H'):
+    M[nm]['valid_range_cm1'] = [700, 4000]
+    M[nm]['notes'].append('Lattice-only approximation in the source measurement band; carriers and multiphonon absorption are omitted. This is not the full measured dielectric response.')
+M['SiC3C']['alternatives'] = dict(gamma6_sensitivity=dict(
+    **tolo(6.52, [(796.2, 972.2, 6.0)]), note='Broader-loss sensitivity model, not an exact Pitman experimental fit.'))
+M['GaN']['valid_range_cm1'] = [300, 1200]
+M['GaN']['notes'].append('Conservative phonon modelling band. Separate TO/LO damping gives negative loss below approximately 153 cm-1; do not extrapolate this fit there. Carrier response is omitted.')
+M['MgO']['valid_range_cm1'] = [100, 2000]
+for nm in ('SiC3C', 'SiC4H', 'SiC6H', 'GaN', 'CdWO4', 'AlAs', 'GaP', 'GaAs', 'InP', 'InAs', 'InSb'):
+    M[nm]['status'] = 'modified'
+for nm in ('AlN', 'InN', 'graphene', 'black_phosphorus'):
+    if nm in M: M[nm]['status'] = 'modelled'
+M['InN']['notes'].append('Composite lattice model: the shared Gamma = 4.4 cm-1 is not an independently measured extraordinary-axis damping. Carrier response is omitted.')
+M['calcite']['status'] = 'partial'
+M['V2O5']['status'] = 'partial'
+M['V2O5']['notes'].append('Constants transcribed from the source, but its printed frequency-weighted damping formula is dimensionally ambiguous with the quoted cm-1 units. The evaluator uses the conventional TO-LO form; full curve validation remains pending.')
+M['V2O5']['alternatives'] = dict(gamma_z_1p5=dict(
+    xx=M['V2O5']['axes']['xx'], yy=M['V2O5']['axes']['yy'], zz=tolo(3.9, [(976, 1037, 1.5)]),
+    note='Source-mentioned z-axis damping alternative; the formula ambiguity also applies here.'))
+M['Ga2O3_beta']['status'] = 'preprint'
+M['Ga2O3_beta']['references'] = [
+    dict(key='Schubert2016_preprint', citation='Schubert et al., arXiv:1512.08590, earlier preprint fit (x parallel c)', url='https://arxiv.org/pdf/1512.08590'),
+    dict(key='Schubert2016_published', citation='Schubert et al., Phys. Rev. B 93, 125209 (2016), revised published fit (x parallel a); comparison only', doi='10.1103/PhysRevB.93.125209', url='https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevB.93.125209/fulltext')]
+M['Ga2O3_beta']['notes'].append('Default contains the preprint lattice response only; the source samples also have free-carrier contributions.')
+M['GaAs']['references'] += refs('Skauli2003')
+M['InAs']['references'] += refs('Lorimor1965')
+# Table bounds are actual data coverage; zero entries do not establish an absorption floor.
+for material in M.values():
+    tables = [axis for axis in material.get('axes', {}).values() if axis.get('type') == 'table']
+    for spec in tables + [alt for alt in material.get('alternatives', {}).values() if alt.get('type') == 'table']:
+        data = np.loadtxt(OUT.parent / spec['file'], delimiter=',', comments='#')
+        spec['valid_range_cm1'] = [float(data[0, 0]), float(data[-1, 0])]
+        if np.any(data[:, 2] == 0):
+            spec['note'] = 'Zero-loss rows reflect absent k data or source zeros; they do not establish a measured absorption floor.'
+    if tables:
+        lo, hi = material['valid_range_cm1']
+        material['valid_range_cm1'] = [max(lo, *(t['valid_range_cm1'][0] for t in tables)), min(hi, *(t['valid_range_cm1'][1] for t in tables))]
+
 # ------------------------------------------------------------------ Euler / tensor helpers written into YAML
 def principal(eps2):
     a, b, c = eps2[0][0], eps2[0][1], eps2[1][1]

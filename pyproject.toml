@@ -21,3 +21,4 @@ materials_library = ["materials/*.yaml", "data/*.csv"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]

@@ -4,7 +4,10 @@ status: verified
 tensor: isotropic
 valid_range_cm1: [400, 20000]
 axes:
-  iso: {type: table, file: data/VO2_Beaini2020_100C_film.csv}
+  iso:
+    type: table
+    file: data/VO2_Beaini2020_100C_film.csv
+    valid_range_cm1: [400.0, 20000.0]
 notes: [Same film at 100 C (rutile metallic phase).]
 references:
 - {key: Beaini2020, citation: 'R. Beaini et al., Sol. Energy Mater. Sol. Cells 205, 110260 (2020) (70 nm VO2 film on SiO2)'}

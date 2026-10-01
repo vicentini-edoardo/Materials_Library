@@ -2,8 +2,12 @@
 name: ZnSe
 status: verified
 tensor: isotropic
-valid_range_cm1: [460, 20000]
+valid_range_cm1: [460.001, 20000]
 axes:
-  iso: {type: table, file: data/ZnSe_Querry1987.csv}
+  iso:
+    type: table
+    file: data/ZnSe_Querry1987.csv
+    valid_range_cm1: [460.001, 20000.0]
+    note: Zero-loss rows reflect absent k data or source zeros; they do not establish a measured absorption floor.
 references:
 - {key: Querry1987, citation: 'M. R. Querry, Optical constants of minerals and other materials..., CRDEC-CR-88009 (1987)'}

@@ -4,6 +4,10 @@ status: verified
 tensor: isotropic
 valid_range_cm1: [556, 5263]
 axes:
-  iso: {type: table, file: data/Ge_Li1980_293K.csv}
+  iso:
+    type: table
+    file: data/Ge_Li1980_293K.csv
+    valid_range_cm1: [555.556, 5263.16]
+    note: Zero-loss rows reflect absent k data or source zeros; they do not establish a measured absorption floor.
 references:
 - {key: Li1980, citation: 'H. H. Li, Refractive index of silicon and germanium..., J. Phys. Chem. Ref. Data 9, 561 (1980)', doi: 10.1063/1.555624}

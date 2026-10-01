@@ -4,7 +4,11 @@ status: verified
 tensor: isotropic
 valid_range_cm1: [254, 17331]
 axes:
-  iso: {type: table, file: data/KRS5_Rodney1956.csv}
+  iso:
+    type: table
+    file: data/KRS5_Rodney1956.csv
+    valid_range_cm1: [253.936, 17331.0]
+    note: Zero-loss rows reflect absent k data or source zeros; they do not establish a measured absorption floor.
 notes: [Same values as the old pyGTM table (which had no citation); k = 0.]
 references:
 - {key: Rodney1956, citation: 'W. S. Rodney, I. H. Malitson, J. Opt. Soc. Am. 46, 956 (1956) (KRS-5)', doi: 10.1364/JOSA.46.000956}

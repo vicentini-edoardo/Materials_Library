@@ -48,3 +48,7 @@ the compilation/formatting of the data, not the data's content.
 Each material's source paper is recorded in [CATALOG.md](CATALOG.md) and in
 the CSV table headers. If you use a specific material's values in your own
 work, cite the original source paper, not this repository.
+
+## Parameter review
+
+See the [2026-10-01 parameter review](reports/MATERIAL_PARAMETER_REVIEW_2026-10-01.md) for evidence, alternatives and unresolved references. Status labels describe source fidelity; they do not certify every specimen or frequency. Declared ranges are advisory: the evaluator permits extrapolation and clamps tables. Zero-loss table rows do not establish a measured absorption floor. Run `python reports/audit_parameters.py` to reproduce the current numerical checks.

@@ -28,8 +28,8 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | `drude` | ε∞ − ω_p²/(ω² + iγω) | `eps_inf`, `wp`, `gamma` (cm⁻¹); also allowed as `drude:` inside `tolo`/`lorentz` |
 
 - Euler angles: intrinsic Z–X′–Z″ (φ, θ, ψ) in degrees, R = R_z(φ) R_x(θ) R_z(ψ), and ε_rotated = R ε_diag Rᵀ.
-- `status`: all current materials are **verified**: values read from the cited source during this build and cross-checked.
-- `alternatives:` in a YAML holds other sourced models for the same material (film vs bulk, Drude vs table).
+- `status`: `verified` denotes a source transcription, not universal experimental validity; `modified` denotes a deliberate model change or omitted source contribution; `modelled` includes assumed parameters; `preprint` denotes an earlier source version; `partial` denotes an unresolved source convention. Read the specimen and applicability notes.
+- `alternatives:` in a YAML holds other models for the same material, including explicitly labelled sensitivity assumptions. Alternatives are not selected automatically by the evaluator.
 
 ## Index
 
@@ -38,42 +38,42 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | Material | Tensor | Model | Range (cm⁻¹) | Status | Sources |
 |---|---|---|---|---|---|
 | [`Al2O3`](src/materials_library/materials/Al2O3.yaml) | uniaxial | TO-LO, 4 modes/axis | 100–5000 | verified | Schubert2000; Querry1985 |
-| [`AlN`](src/materials_library/materials/AlN.yaml) | uniaxial | lorentz | 50–14000 | verified | Moore2005; Kischkat2012 |
+| [`AlN`](src/materials_library/materials/AlN.yaml) | uniaxial | lorentz | 50–14000 | modelled | Moore2005; Kischkat2012 |
 | [`alpha_quartz`](src/materials_library/materials/alpha_quartz.yaml) | uniaxial | TO-LO, 6 modes/axis | 300–1600 | verified | GervaisPiriou1975; Winta2019 |
-| [`calcite`](src/materials_library/materials/calcite.yaml) | uniaxial | lorentz | 50–2000 | verified | Lane1999; Ma2021 |
-| [`CdWO4`](src/materials_library/materials/CdWO4.yaml) | monoclinic | 15 rank-1 oscillators + ε∞ tensor | 80–1200 | verified | Mock2017 |
-| [`Ga2O3_beta`](src/materials_library/materials/Ga2O3_beta.yaml) | monoclinic | 12 rank-1 oscillators + ε∞ tensor | 150–1200 | verified | Schubert2016; HyperbolicOptics |
-| [`GaAs`](src/materials_library/materials/GaAs.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | verified | Lockwood2005 |
-| [`GaN`](src/materials_library/materials/GaN.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Kasic2000; Barker1973 |
-| [`GaP`](src/materials_library/materials/GaP.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | verified | Lockwood2005 |
+| [`calcite`](src/materials_library/materials/calcite.yaml) | uniaxial | lorentz | 50–2000 | partial | Lane1999; Ma2021 |
+| [`CdWO4`](src/materials_library/materials/CdWO4.yaml) | monoclinic | 15 rank-1 oscillators + ε∞ tensor | 80–1200 | modified | Mock2017 |
+| [`Ga2O3_beta`](src/materials_library/materials/Ga2O3_beta.yaml) | monoclinic | 12 rank-1 oscillators + ε∞ tensor | 150–1200 | preprint | Schubert2016_preprint; Schubert2016_published |
+| [`GaAs`](src/materials_library/materials/GaAs.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | modified | Lockwood2005; Skauli2003 |
+| [`GaN`](src/materials_library/materials/GaN.yaml) | uniaxial | TO-LO, 1 mode/axis | 300–1200 | modified | Kasic2000; Barker1973 |
+| [`GaP`](src/materials_library/materials/GaP.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | modified | Lockwood2005 |
 | [`hBN`](src/materials_library/materials/hBN.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Giles2018 |
 | [`hBN_10B`](src/materials_library/materials/hBN_10B.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Giles2018 |
 | [`hBN_11B`](src/materials_library/materials/hBN_11B.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Giles2018 |
-| [`InAs`](src/materials_library/materials/InAs.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | verified | Lockwood2005 |
-| [`InN`](src/materials_library/materials/InN.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Kasic2002; Reparaz2018 |
-| [`MgO`](src/materials_library/materials/MgO.yaml) | isotropic | lorentz | 100–27778 | verified | Jasperse1966; Stephens1952 |
+| [`InAs`](src/materials_library/materials/InAs.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | modified | Lockwood2005; Lorimor1965 |
+| [`InN`](src/materials_library/materials/InN.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | modelled | Kasic2002; Reparaz2018 |
+| [`MgO`](src/materials_library/materials/MgO.yaml) | isotropic | lorentz | 100–2000 | verified | Jasperse1966; Stephens1952 |
 | [`MoO3`](src/materials_library/materials/MoO3.yaml) | biaxial | TO-LO, 3 modes/axis | 400–1200 | verified | AlvarezPerez2020 |
-| [`SiC3C`](src/materials_library/materials/SiC3C.yaml) | isotropic | TO-LO, 1 mode/axis | 100–5000 | verified | PatrickChoyke1970; Olego1982; Mutschke1999; Pitman2008 |
-| [`SiC4H`](src/materials_library/materials/SiC4H.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Tiwald1999 |
-| [`SiC6H`](src/materials_library/materials/SiC6H.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Tiwald1999; PatrickChoyke1970 |
-| [`V2O5`](src/materials_library/materials/V2O5.yaml) | biaxial | TO-LO, 1 mode/axis | 400–1200 | verified | TaboadaGutierrez2020 |
+| [`SiC3C`](src/materials_library/materials/SiC3C.yaml) | isotropic | TO-LO, 1 mode/axis | 100–5000 | modified | PatrickChoyke1970; Olego1982; Mutschke1999; Pitman2008 |
+| [`SiC4H`](src/materials_library/materials/SiC4H.yaml) | uniaxial | TO-LO, 1 mode/axis | 700–4000 | modified | Tiwald1999 |
+| [`SiC6H`](src/materials_library/materials/SiC6H.yaml) | uniaxial | TO-LO, 1 mode/axis | 700–4000 | modified | Tiwald1999; PatrickChoyke1970 |
+| [`V2O5`](src/materials_library/materials/V2O5.yaml) | biaxial | TO-LO, 1 mode/axis | 400–1200 | partial | TaboadaGutierrez2020 |
 | [`ZnO`](src/materials_library/materials/ZnO.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Ashkenov2003; Querry1985 |
 
 ### 2D sheets
 
 | Material | Tensor | Model | Range (cm⁻¹) | Status | Sources |
 |---|---|---|---|---|---|
-| [`black_phosphorus`](src/materials_library/materials/black_phosphorus.yaml) | sheet | bp drude | 10–5000 | verified | Low2014 |
-| [`graphene`](src/materials_library/materials/graphene.yaml) | sheet | graphene falkovsky | 10–20000 | verified | Falkovsky2008 |
+| [`black_phosphorus`](src/materials_library/materials/black_phosphorus.yaml) | sheet | bp drude | 10–5000 | modelled | Low2014 |
+| [`graphene`](src/materials_library/materials/graphene.yaml) | sheet | graphene falkovsky | 10–20000 | modelled | Falkovsky2008 |
 
 ### Metals, phase-change and doped
 
 | Material | Tensor | Model | Range (cm⁻¹) | Status | Sources |
 |---|---|---|---|---|---|
-| [`Ag`](src/materials_library/materials/Ag.yaml) | isotropic | table | 401–37037 | verified | Yang2015 |
-| [`Au`](src/materials_library/materials/Au.yaml) | isotropic | table | 401–33333 | verified | Olmon2012; Derkachova2016 |
-| [`GST_amorphous`](src/materials_library/materials/GST_amorphous.yaml) | isotropic | table | 338–28549 | verified | Frantz2023 |
-| [`GST_crystalline`](src/materials_library/materials/GST_crystalline.yaml) | isotropic | table | 309–28549 | verified | Frantz2023 |
+| [`Ag`](src/materials_library/materials/Ag.yaml) | isotropic | table | 401.284–37037 | verified | Yang2015 |
+| [`Au`](src/materials_library/materials/Au.yaml) | isotropic | table | 401.123–33333 | verified | Olmon2012; Derkachova2016 |
+| [`GST_amorphous`](src/materials_library/materials/GST_amorphous.yaml) | isotropic | table | 338–28548.6 | verified | Frantz2023 |
+| [`GST_crystalline`](src/materials_library/materials/GST_crystalline.yaml) | isotropic | table | 309–28548.6 | verified | Frantz2023 |
 | [`VO2_insulating`](src/materials_library/materials/VO2_insulating.yaml) | isotropic | table | 400–20000 | verified | Beaini2020 |
 | [`VO2_metallic`](src/materials_library/materials/VO2_metallic.yaml) | isotropic | table | 400–20000 | verified | Beaini2020 |
 
@@ -81,22 +81,22 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 
 | Material | Tensor | Model | Range (cm⁻¹) | Status | Sources |
 |---|---|---|---|---|---|
-| [`AlAs`](src/materials_library/materials/AlAs.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | verified | Lockwood2005 |
+| [`AlAs`](src/materials_library/materials/AlAs.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | modified | Lockwood2005 |
 | [`aSiO2`](src/materials_library/materials/aSiO2.yaml) | isotropic | table | 80–403000 | verified | Franta2016; Kischkat2012; Popova1972 |
-| [`BaF2`](src/materials_library/materials/BaF2.yaml) | isotropic | table | 60–45455 | verified | Querry1987; Kaiser1962 |
+| [`BaF2`](src/materials_library/materials/BaF2.yaml) | isotropic | table | 60–45454.5 | verified | Querry1987; Kaiser1962 |
 | [`CaF2`](src/materials_library/materials/CaF2.yaml) | isotropic | lorentz | 125–1000 | verified | Kaiser1962; Li1980b |
 | [`Diamond`](src/materials_library/materials/Diamond.yaml) | isotropic | table | 20–4000 | verified | Dore1998 |
 | [`Ge`](src/materials_library/materials/Ge.yaml) | isotropic | table | 556–5263 | verified | Li1980 |
-| [`InP`](src/materials_library/materials/InP.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | verified | Lockwood2005 |
-| [`InSb`](src/materials_library/materials/InSb.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | verified | Lockwood2005 |
-| [`KBr`](src/materials_library/materials/KBr.yaml) | isotropic | table | 238–50000 | verified | Li1976 |
+| [`InP`](src/materials_library/materials/InP.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | modified | Lockwood2005 |
+| [`InSb`](src/materials_library/materials/InSb.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | modified | Lockwood2005 |
+| [`KBr`](src/materials_library/materials/KBr.yaml) | isotropic | table | 238.095–50000 | verified | Li1976 |
 | [`KRS5`](src/materials_library/materials/KRS5.yaml) | isotropic | table | 254–17331 | verified | Rodney1956 |
 | [`LiF`](src/materials_library/materials/LiF.yaml) | isotropic | lorentz | 100–5000 | verified | Jasperse1966 |
 | [`PMMA`](src/materials_library/materials/PMMA.yaml) | isotropic | lorentz | 550–4000 | verified | Tsuda2018 |
 | [`Si`](src/materials_library/materials/Si.yaml) | isotropic | table | 430–4000 | verified | ChandlerHorowitz2005 |
 | [`Si3N4_film`](src/materials_library/materials/Si3N4_film.yaml) | isotropic | table | 700–6500 | verified | Kischkat2012 |
-| [`vacuum`](src/materials_library/materials/vacuum.yaml) | isotropic | constant | 0–1e+09 | verified | — |
-| [`ZnSe`](src/materials_library/materials/ZnSe.yaml) | isotropic | table | 460–20000 | verified | Querry1987 |
+| [`vacuum`](src/materials_library/materials/vacuum.yaml) | isotropic | constant | 0–1e+09 | verified |  |
+| [`ZnSe`](src/materials_library/materials/ZnSe.yaml) | isotropic | table | 460.001–20000 | verified | Querry1987 |
 
 
 ## Monoclinic materials: rotated diagonal matrices and Euler angles

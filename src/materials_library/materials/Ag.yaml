@@ -2,9 +2,12 @@
 name: Ag
 status: verified
 tensor: isotropic
-valid_range_cm1: [401, 37037]
+valid_range_cm1: [401.284, 37037]
 axes:
-  iso: {type: table, file: data/Ag_Yang2015.csv}
+  iso:
+    type: table
+    file: data/Ag_Yang2015.csv
+    valid_range_cm1: [401.284, 37037.0]
 alternatives:
   drude_Yang2015: {type: drude, eps_inf: 5.0, wp: 71783.3, gamma: 312.3, note: 'omega_p = 8.9 eV, tau = 17 fs -> gamma = 1/(2 pi c tau) = 312 cm-1. pyGTM used 1/tau
       as if in Hz (6.3x too lossy).'}

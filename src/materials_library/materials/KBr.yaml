@@ -2,9 +2,13 @@
 name: KBr
 status: verified
 tensor: isotropic
-valid_range_cm1: [238, 50000]
+valid_range_cm1: [238.095, 50000]
 axes:
-  iso: {type: table, file: data/KBr_Li1976.csv}
+  iso:
+    type: table
+    file: data/KBr_Li1976.csv
+    valid_range_cm1: [238.095, 50000.0]
+    note: Zero-loss rows reflect absent k data or source zeros; they do not establish a measured absorption floor.
 notes: [IR window; transparent above ~ 240 cm-1 (TO phonon ~ 113 cm-1 not modelled).]
 references:
 - {key: Li1976, citation: 'H. H. Li, Refractive index of alkali halides..., J. Phys. Chem. Ref. Data 5, 329 (1976)'}

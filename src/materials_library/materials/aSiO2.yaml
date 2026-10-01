@@ -5,10 +5,20 @@ status: verified
 tensor: isotropic
 valid_range_cm1: [80, 403000]
 axes:
-  iso: {type: table, file: data/aSiO2_Franta2016_fused.csv}
+  iso:
+    type: table
+    file: data/aSiO2_Franta2016_fused.csv
+    valid_range_cm1: [79.9099, 403275.0]
+    note: Zero-loss rows reflect absent k data or source zeros; they do not establish a measured absorption floor.
 alternatives:
-  film_Kischkat2012: {type: table, file: data/aSiO2_Kischkat2012_film.csv}
-  Popova1972: {type: table, file: data/aSiO2_Popova1972.csv}
+  film_Kischkat2012:
+    type: table
+    file: data/aSiO2_Kischkat2012_film.csv
+    valid_range_cm1: [700.0, 6500.01]
+  Popova1972:
+    type: table
+    file: data/aSiO2_Popova1972.csv
+    valid_range_cm1: [200.0, 1428.57]
 notes: [Bulk fused silica. Sputtered films (Kischkat) differ by ~20% near the 1080 cm-1 band.]
 references:
 - {key: Franta2016, citation: 'D. Franta et al., Proc. SPIE 9890, 989014 (2016) (fused silica)', doi: 10.1117/12.2227580}

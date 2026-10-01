@@ -2,9 +2,12 @@
 name: Au
 status: verified
 tensor: isotropic
-valid_range_cm1: [401, 33333]
+valid_range_cm1: [401.123, 33333]
 axes:
-  iso: {type: table, file: data/Au_Olmon2012_evap.csv}
+  iso:
+    type: table
+    file: data/Au_Olmon2012_evap.csv
+    valid_range_cm1: [401.123, 33333.3]
 alternatives:
   drude_Derkachova2016: {type: drude, eps_inf: 9.84, wp: 72670.6, gamma: 580.7, note: 'omega_p = 9.010 eV, gamma = 0.072 eV; fitted on visible data, over-damped in
       the mid-IR (Im eps +60% vs Olmon at 1000 cm-1).'}

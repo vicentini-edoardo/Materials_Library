@@ -5,7 +5,10 @@ status: verified
 tensor: isotropic
 valid_range_cm1: [700, 6500]
 axes:
-  iso: {type: table, file: data/Si3N4_Kischkat2012_film.csv}
+  iso:
+    type: table
+    file: data/Si3N4_Kischkat2012_film.csv
+    valid_range_cm1: [700.0, 6500.01]
 notes: ['437 nm sputtered film on Si. LPCVD/PECVD SiNx varies strongly with stoichiometry; pyGTM eps_SiN (Cataldo et al., Opt. Lett. 37, 4200 (2012)) is an alternative
     for low-stress PECVD SiNx.']
 references:
