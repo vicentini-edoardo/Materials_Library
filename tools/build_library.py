@@ -31,7 +31,8 @@ R = {
  'Beaini2020': dict(citation='R. Beaini et al., Sol. Energy Mater. Sol. Cells 205, 110260 (2020) (70 nm VO2 film on SiO2)'),
  'Frantz2023': dict(citation='J. A. Frantz et al., Opt. Mater. Express 13, 3631 (2023) (Ge2Sb2Te5)'),
  'Schubert2000': dict(citation='M. Schubert, T. E. Tiwald, C. M. Herzinger, Phys. Rev. B 61, 8187 (2000) (sapphire)', doi='10.1103/PhysRevB.61.8187', url='https://www.academia.edu/28131084/Infrared_dielectric_anisotropy_and_phonon_modes_of_sapphire'),
- 'Schubert2016': dict(citation='M. Schubert et al., Phys. Rev. B 93, 125209 (2016) (beta-Ga2O3), Tables II and IV', doi='10.1103/PhysRevB.93.125209', url='https://arxiv.org/abs/1512.08590'),
+ 'Schubert2016_preprint': dict(citation='Schubert et al., arXiv:1512.08590, earlier preprint fit (x parallel c)', url='https://arxiv.org/pdf/1512.08590'),
+ 'Schubert2016_published': dict(citation='Schubert et al., Phys. Rev. B 93, 125209 (2016), revised published fit (x parallel a); comparison only', doi='10.1103/PhysRevB.93.125209', url='https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevB.93.125209/fulltext'),
  'Mock2017': dict(citation='A. Mock et al., Phys. Rev. B 95, 165202 (2017) (CdWO4), Tables II and III', doi='10.1103/PhysRevB.95.165202', url='https://arxiv.org/abs/1701.00813'),
  'AlvarezPerez2020': dict(citation='G. Álvarez-Pérez et al., Adv. Mater. 32, 1908176 (2020) (alpha-MoO3), Table 1', doi='10.1002/adma.201908176', url='https://arxiv.org/abs/1912.06267'),
  'TaboadaGutierrez2020': dict(citation='J. Taboada-Gutiérrez et al., Nat. Mater. (2020) (alpha-V2O5), Methods section of the arXiv version', doi='10.1038/s41563-020-0665-0', url='https://arxiv.org/abs/2501.08705'),
@@ -193,7 +194,7 @@ ga_bu = [mono_osc(A, t, g, a) for A, t, g, a in zip([256.45, 426.87, 820.36, 792
                                                    [10.4, 6.44, 12.32, 10.05, 3.79, 1.85, 1.75, 1.98],
                                                    [48.7, 5.4, 106.0, 21.0, 144.0, 0.0, 158.5, 80.9])]
 ga_au = [mono_osc(A, t, g, sym='Au') for A, t, g in zip([542, 718, 579, 72], [663.22, 448.65, 296.64, 154.85], [3.23, 10.28, 14.31, 2.1])]
-add('Ga2O3_beta', tensor='monoclinic', status='verified', valid_range_cm1=[150, 1200], references=refs('Schubert2016', 'HyperbolicOptics'),
+add('Ga2O3_beta', tensor='monoclinic', status='verified', valid_range_cm1=[150, 1200], references=refs('Schubert2016_preprint', 'Schubert2016_published'),
     frame=dict(x='crystal c axis', y='perpendicular to b and c (in the a-c plane)', z='crystal b axis (monoclinic 2-fold axis)'),
     model=dict(eps_inf=[[3.89, 0, 0], [0, 2.90, 0], [0, 0, 3.87]], oscillators=ga_bu + ga_au,
                lo_modes=dict(Bu=[817.0, 778.1, 719.1, 579.3, 391.8, 307.5, 286.5, 271.2], Au=[770.3, 558.9, 344.7, 156.0])),
@@ -358,9 +359,7 @@ M['V2O5']['alternatives'] = dict(gamma_z_1p5=dict(
     xx=M['V2O5']['axes']['xx'], yy=M['V2O5']['axes']['yy'], zz=tolo(3.9, [(976, 1037, 1.5)]),
     note='Source-mentioned z-axis damping alternative; the formula ambiguity also applies here.'))
 M['Ga2O3_beta']['status'] = 'preprint'
-M['Ga2O3_beta']['references'] = [
-    dict(key='Schubert2016_preprint', citation='Schubert et al., arXiv:1512.08590, earlier preprint fit (x parallel c)', url='https://arxiv.org/pdf/1512.08590'),
-    dict(key='Schubert2016_published', citation='Schubert et al., Phys. Rev. B 93, 125209 (2016), revised published fit (x parallel a); comparison only', doi='10.1103/PhysRevB.93.125209', url='https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevB.93.125209/fulltext')]
+M['Ga2O3_beta']['references'] = refs('Schubert2016_preprint', 'Schubert2016_published')
 M['Ga2O3_beta']['notes'].append('Default contains the preprint lattice response only; the source samples also have free-carrier contributions.')
 M['GaAs']['references'] += refs('Skauli2003')
 M['InAs']['references'] += refs('Lorimor1965')

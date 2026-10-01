@@ -99,6 +99,60 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | [`ZnSe`](src/materials_library/materials/ZnSe.yaml) | isotropic | table | 460.001–20000 | verified | Querry1987 |
 
 
+## Reference table
+
+References used by the active material definitions, including alternatives and comparison-only sources. The material notes distinguish which fit is implemented.
+
+| Key | Reference | Link |
+|---|---|---|
+| AlvarezPerez2020 | G. Álvarez-Pérez et al., Adv. Mater. 32, 1908176 (2020) (alpha-MoO3), Table 1 | [Source](https://arxiv.org/abs/1912.06267) |
+| Ashkenov2003 | N. Ashkenov et al., J. Appl. Phys. 93, 126 (2003), Tables I-II | [Source](https://doi.org/10.1063/1.1526935) |
+| Barker1973 | A. S. Barker, M. Ilegems, Phys. Rev. B 7, 743 (1973), Tables I-II | [Source](https://doi.org/10.1103/PhysRevB.7.743) |
+| Beaini2020 | R. Beaini et al., Sol. Energy Mater. Sol. Cells 205, 110260 (2020) (70 nm VO2 film on SiO2) | — |
+| ChandlerHorowitz2005 | D. Chandler-Horowitz, P. M. Amirtharaj, J. Appl. Phys. 97, 123526 (2005) | [Source](https://doi.org/10.1063/1.1923612) |
+| Derkachova2016 | A. Derkachova, K. Kolwas, I. Demchenko, Plasmonics 11, 941 (2016) | [Source](https://doi.org/10.1007/s11468-015-0128-7) |
+| Dore1998 | P. Dore et al., Appl. Opt. 37, 5731 (1998) (CVD diamond) | [Source](https://doi.org/10.1364/AO.37.005731) |
+| Falkovsky2008 | L. A. Falkovsky, Optical properties of graphene, J. Phys.: Conf. Ser. 129, 012004 (2008) | [Source](https://arxiv.org/abs/0806.3663) |
+| Franta2016 | D. Franta et al., Proc. SPIE 9890, 989014 (2016) (fused silica) | [Source](https://doi.org/10.1117/12.2227580) |
+| Frantz2023 | J. A. Frantz et al., Opt. Mater. Express 13, 3631 (2023) (Ge2Sb2Te5) | — |
+| GervaisPiriou1975 | F. Gervais, B. Piriou, Phys. Rev. B 11, 3944 (1975), Tables I-II (T = 295 K rows) | [Source](https://doi.org/10.1103/PhysRevB.11.3944) |
+| Giles2018 | A. J. Giles et al., Nat. Mater. 17, 134 (2018) (hBN isotopes), SI Table S4 | [Source](https://fogler.physics.ucsd.edu/bib/Gilles2018ULP.pdf) |
+| Jasperse1966 | J. R. Jasperse, A. Kahan, J. N. Plendl, S. S. Mitra, Phys. Rev. 146, 526 (1966), Tables I-II (295 K) | [Source](https://doi.org/10.1103/PhysRev.146.526) |
+| Kaiser1962 | W. Kaiser, W. G. Spitzer, R. H. Kaiser, L. E. Howarth, Phys. Rev. 127, 1950 (1962) | [Source](https://github.com/polyanskiy/refractiveindex.info-scripts) |
+| Kasic2000 | A. Kasic, M. Schubert, S. Einfeldt, D. Hommel, T. E. Tiwald, Phys. Rev. B 62, 7365 (2000), Tables I-III (sample A) | [Source](https://doi.org/10.1103/PhysRevB.62.7365) |
+| Kasic2002 | A. Kasic, M. Schubert, Y. Saito, Y. Nanishi, G. Wagner, Effective electron mass and phonon modes in n-type hexagonal InN, Phys. Rev. B 65, 115206 (2002) | [Source](https://doi.org/10.1103/PhysRevB.65.115206) |
+| Kischkat2012 | J. Kischkat et al., Mid-infrared optical properties of thin films of Al2O3, TiO2, SiO2, AlN and Si3N4, Appl. Opt. 51, 6789 (2012) | [Source](https://doi.org/10.1364/AO.51.006789) |
+| Lane1999 | M. D. Lane, J. Geophys. Res. Planets 104, 14099 (1999), Table 1 | [Source](https://doi.org/10.1029/1999JE900025) |
+| Li1976 | H. H. Li, Refractive index of alkali halides..., J. Phys. Chem. Ref. Data 5, 329 (1976) | — |
+| Li1980 | H. H. Li, Refractive index of silicon and germanium..., J. Phys. Chem. Ref. Data 9, 561 (1980) | [Source](https://doi.org/10.1063/1.555624) |
+| Li1980b | H. H. Li, Refractive index of alkaline earth halides..., J. Phys. Chem. Ref. Data 9, 161 (1980) | — |
+| Lockwood2005 | D. J. Lockwood, G. Yu, N. L. Rowell, Solid State Commun. 136, 404 (2005), Table 2 (293 K) | [Source](https://doi.org/10.1016/j.ssc.2005.08.030) |
+| Lorimor1965 | O. G. Lorimor, W. G. Spitzer, J. Appl. Phys. 36, 1841 (1965) (InAs) | — |
+| Low2014 | T. Low et al., Plasmons and screening in monolayer and multilayer black phosphorus, Phys. Rev. Lett. 113, 106802 (2014) | [Source](https://arxiv.org/abs/1404.4035) |
+| Ma2021 | W. Ma et al., Ghost hyperbolic surface polaritons in bulk anisotropic crystals, Nature 596, 362 (2021), Methods Eq. 4 (values from Hellwege et al. 1970) | [Source](https://doi.org/10.1038/s41586-021-03755-1) |
+| Mock2017 | A. Mock, R. Korlacki, S. Knight, M. Schubert, Phys. Rev. B 95, 165202 (2017), Tables II-IV | [Source](https://doi.org/10.1103/PhysRevB.95.165202) |
+| Moore2005 | W. J. Moore, J. A. Freitas, R. T. Holm, O. Kovalenkov, V. Dmitriev, Appl. Phys. Lett. 86, 141912 (2005), Table I | [Source](https://doi.org/10.1063/1.1899233) |
+| Mutschke1999 | H. Mutschke et al., A&A 345, 187 (1999) (SiC polytypes), Table 1 | [Source](https://arxiv.org/abs/astro-ph/9903031) |
+| Olego1982 | D. Olego et al. (1982), Raman — via Ioffe NSM | — |
+| Olmon2012 | R. L. Olmon et al., Optical dielectric function of gold, Phys. Rev. B 86, 235147 (2012) | [Source](https://doi.org/10.1103/PhysRevB.86.235147) |
+| PatrickChoyke1970 | L. Patrick, W. J. Choyke (1970) — via Ioffe NSM | [Source](https://www.ioffe.ru/SVA/NSM/Semicond/SiC/optic.html) |
+| Pitman2008 | K. M. Pitman et al., A&A 483, 661 (2008) (3C-SiC) | [Source](https://arxiv.org/abs/0803.1210) |
+| Popova1972 | S. Popova, T. Tolstykh, V. Vorobev, Opt. Spectrosc. 33, 444 (1972) (amorphous quartz) | — |
+| Querry1985 | M. R. Querry, Optical constants, Contractor Report CRDC-CR-85034 (1985) | — |
+| Querry1987 | M. R. Querry, Optical constants of minerals and other materials..., CRDEC-CR-88009 (1987) | — |
+| Reparaz2018 | J. S. Reparaz et al., Comparative study of the pressure dependence of optical-phonon transverse-effective charges and linewidths in wurtzite InN, Phys. Rev. B 98, 165204 (2018) | [Source](https://doi.org/10.1103/PhysRevB.98.165204) |
+| Rodney1956 | W. S. Rodney, I. H. Malitson, J. Opt. Soc. Am. 46, 956 (1956) (KRS-5) | [Source](https://doi.org/10.1364/JOSA.46.000956) |
+| Schubert2000 | M. Schubert, T. E. Tiwald, C. M. Herzinger, Phys. Rev. B 61, 8187 (2000) (sapphire) | [Source](https://www.academia.edu/28131084/Infrared_dielectric_anisotropy_and_phonon_modes_of_sapphire) |
+| Schubert2016_preprint | Schubert et al., arXiv:1512.08590, earlier preprint fit (x parallel c) | [Source](https://arxiv.org/pdf/1512.08590) |
+| Schubert2016_published | Schubert et al., Phys. Rev. B 93, 125209 (2016), revised published fit (x parallel a); comparison only | [Source](https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevB.93.125209/fulltext) |
+| Skauli2003 | T. Skauli et al., J. Appl. Phys. 94, 6447 (2003) (GaAs) | — |
+| Stephens1952 | R. E. Stephens, I. H. Malitson, J. Res. Natl. Bur. Stand. 49, 249 (1952) | — |
+| TaboadaGutierrez2020 | J. Taboada-Gutiérrez et al., Nat. Mater. (2020) (alpha-V2O5), Methods section of the arXiv version | [Source](https://arxiv.org/abs/2501.08705) |
+| Tiwald1999 | T. E. Tiwald, J. A. Woollam, S. Zollner et al., Phys. Rev. B 60, 11464 (1999), Table I | [Source](https://doi.org/10.1103/PhysRevB.60.11464) |
+| Tsuda2018 | S. Tsuda et al., Opt. Express 26, 6899 (2018) (PMMA Lorentz–Drude fit) | [Source](https://github.com/polyanskiy/refractiveindex.info-scripts) |
+| Winta2019 | C. J. Winta et al., Low-temperature infrared dielectric function of hyperbolic alpha-quartz, arXiv:1902.03072 (2019), Tables I-II | [Source](https://arxiv.org/abs/1902.03072) |
+| Yang2015 | H. U. Yang et al., Optical dielectric function of silver, Phys. Rev. B 91, 235137 (2015) | [Source](https://nano-optics.colorado.edu/wp-content/uploads/2020/06/Yang_PhysRevB_15_MainText.pdf) |
+
 ## Monoclinic materials: rotated diagonal matrices and Euler angles
 
 **Short answer: no single rotated diagonal matrix reproduces ε(ω) of β‑Ga₂O₃ or CdWO₄, but the tensor is exactly a sum of rotated diagonal (rank‑1) matrices, each with its own fixed Euler angles.**
