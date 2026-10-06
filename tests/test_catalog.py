@@ -8,6 +8,28 @@ from materials_library import eps_tensor, load, names, sheet_conductivity
 ROOT = Path(__file__).resolve().parents[1]
 
 
+@pytest.mark.parametrize("name,axis,expected", [
+    # Literal eps1/eps2 rows from Pitman's author-hosted high-resolution files.
+    ("SiC3C", 0, [22.3091 + .4382j, 82.5845 + 452.9114j, -5.7058 + .3967j]),
+    ("SiC6H", 0, [21.5362 + .3683j, 98.4156 + 484.1390j, -5.1231 + .3334j]),
+    ("SiC6H", 2, [29.9240 + .6226j, -164.9191 + 52.2283j, -5.7741 + .3810j]),
+])
+def test_sic_defaults_match_pitman_author_data(name, axis, expected):
+    # Wrong width conventions, backgrounds or polarizations change these curves.
+    actual = eps_tensor(load(name), [700, 797, 900])[:, axis, axis]
+    np.testing.assert_allclose(actual, expected, rtol=0, atol=.003)
+
+
+def test_sic4h_matches_klein_scalar_fit():
+    # Hand-calculated Eq. 1 values with distinct TO/LO damping, not one gamma.
+    response = eps_tensor(load("SiC4H"), [796, 900, 971])
+    expected = [6.7862068966 + 878.7541154046j,
+                -4.9379998252 + .1734861413j,
+                .0005626993 + .0617922079j]
+    for axis in range(3):
+        np.testing.assert_allclose(response[:, axis, axis], expected, rtol=0, atol=1e-8)
+
+
 def test_catalog_regeneration_preserves_definitions():
     generated = runpy.run_path(str(ROOT / "tools/build_library.py"))["M"]
     assert set(generated) == set(names())

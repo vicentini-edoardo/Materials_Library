@@ -44,9 +44,11 @@ R = {
  'Ioffe': dict(citation='Ioffe Institute NSM archive, semiconductor properties', url='https://www.ioffe.ru/SVA/NSM/Semicond/'),
  'PatrickChoyke1970': dict(citation='L. Patrick, W. J. Choyke (1970) — via Ioffe NSM', url='https://www.ioffe.ru/SVA/NSM/Semicond/SiC/optic.html'),
  'Mutschke1999': dict(citation='H. Mutschke et al., A&A 345, 187 (1999) (SiC polytypes), Table 1', url='https://arxiv.org/abs/astro-ph/9903031'),
- 'Pitman2008': dict(citation='K. M. Pitman et al., A&A 483, 661 (2008) (3C-SiC)', url='https://arxiv.org/abs/0803.1210'),
+ 'Pitman2008': dict(citation='K. M. Pitman, A. M. Hofmeister, A. B. Corman, A. K. Speck, Optical properties of silicon carbide for astrophysical applications. I. New laboratory infrared reflectance spectra and optical constants, A&A 483, 661-672 (2008), Section 4.2 and Figs. 3, 4, 7 (3C and 6H)', doi='10.1051/0004-6361:20078468', url='https://arxiv.org/html/0803.1210'),
+ 'Pitman2008_data': dict(citation='Pitman et al. (2008), author-hosted high-resolution classical-dispersion dielectric-function files', url='https://epsc.wustl.edu/~hofmeist/spectra/IRSiC/'),
+ 'Klein2025': dict(citation='M. Klein, Y. Gershuni, A. Perutski, J.-P. Hugonin, I. Epstein, Nanometer-Scale Cavities for Mid-Infrared Radiation via Image Phonon Polariton Resonators, Nano Lett. 25, 8999-9005 (2025), Eq. 1, Fig. 2 and Methods; parameters checked in arXiv v2', doi='10.1021/acs.nanolett.5c01352', url='https://arxiv.org/html/2503.04168v2'),
  'Olego1982': dict(citation='D. Olego et al. (1982), Raman — via Ioffe NSM'),
- 'Tiwald1999': dict(citation='T. E. Tiwald et al., Phys. Rev. B 60, 11464 (1999) — NOT OPENED; TO/LO quoted in Phys. Rev. B 93, 085205 (2016)', url='https://link.aps.org/accepted/10.1103/PhysRevB.93.085205'),
+ 'Tiwald1999': dict(citation='T. E. Tiwald et al., Carrier concentration and lattice absorption in bulk and epitaxial silicon carbide determined using infrared ellipsometry, Phys. Rev. B 60, 11464-11474 (1999), Table I and Eq. 3', doi='10.1103/PhysRevB.60.11464', url='https://digitalcommons.unl.edu/electricalengineeringfacpub/27/'),
  'Barker1973': dict(citation='A. S. Barker, M. Ilegems, Phys. Rev. B 7, 743 (1973) (GaN) — Sellmeier-phonon fit via refractiveindex.info', doi='10.1103/PhysRevB.7.743'),
  'Ratchford2019': dict(citation='D. C. Ratchford et al., ACS Nano 13, 6730 (2019), quoting Azuhata 1995 and McNeil 1993 (Raman)', url='https://arxiv.org/abs/1806.06792'),
  'Goldberg2001': dict(citation='Yu. Goldberg, in Properties of Advanced Semiconductor Materials (Wiley 2001) — via Ioffe NSM (AlN)', url='https://www.ioffe.ru/SVA/NSM/Semicond/AlN/optic.html'),
@@ -236,7 +238,7 @@ R.update({
  'Kasic2000': dict(citation='A. Kasic, M. Schubert, S. Einfeldt, D. Hommel, T. E. Tiwald, Phys. Rev. B 62, 7365 (2000), Tables I-III (sample A)', doi='10.1103/PhysRevB.62.7365'),
  'Barker1973': dict(citation='A. S. Barker, M. Ilegems, Phys. Rev. B 7, 743 (1973), Tables I-II', doi='10.1103/PhysRevB.7.743'),
  'Moore2005': dict(citation='W. J. Moore, J. A. Freitas, R. T. Holm, O. Kovalenkov, V. Dmitriev, Appl. Phys. Lett. 86, 141912 (2005), Table I', doi='10.1063/1.1899233'),
- 'Tiwald1999': dict(citation='T. E. Tiwald, J. A. Woollam, S. Zollner et al., Phys. Rev. B 60, 11464 (1999), Table I', doi='10.1103/PhysRevB.60.11464'),
+ 'Tiwald1999': R['Tiwald1999'],
  'GervaisPiriou1975': dict(citation='F. Gervais, B. Piriou, Phys. Rev. B 11, 3944 (1975), Tables I-II (T = 295 K rows)', doi='10.1103/PhysRevB.11.3944'),
  'Lane1999': dict(citation='M. D. Lane, J. Geophys. Res. Planets 104, 14099 (1999), Table 1', doi='10.1029/1999JE900025'),
  'Ma2021': dict(citation='W. Ma et al., Ghost hyperbolic surface polaritons in bulk anisotropic crystals, Nature 596, 362 (2021), Methods Eq. 4 (values from Hellwege et al. 1970)', doi='10.1038/s41586-021-03755-1'),
@@ -333,12 +335,14 @@ add('MgO', tensor='isotropic', status='verified', valid_range_cm1=[100, 27778], 
 add('LiF', tensor='isotropic', status='verified', valid_range_cm1=[100, 5000], references=refs('Jasperse1966'),
     axes=dict(iso=sk(1.90, [(306, 6.80, 0.0600), (503, 0.110, 0.180)])), notes=['295 K row of Jasperse Table I.'])
 # --- Corrections from the 2026-10-01 literature and numerical audit -----------------
-# Preserve the packaged broader-loss 4H model; expose the narrow experimental fit explicitly.
+# Use the experimental 4H sample-9 lattice fit; retain the assumed broader-loss model.
 M['SiC4H']['alternatives'] = dict(Tiwald1999_sample9=dict(
     **uni(tolo(6.6, [(797.0, 970.0, 1.4)]), tolo(6.9, [(782.0, 964.0, 1.4)])),
     valid_range_cm1=[700, 4000], note='Sample 9 lattice fit, Gamma = 1.4 cm-1, carrier density fixed to zero. Multiphonon absorption is omitted.'))
-M['SiC4H']['axes'] = uni(tolo(6.6, [(797.0, 970.0, 6.0)]), tolo(6.9, [(782.0, 964.0, 6.0)]))
-M['SiC4H']['notes'].insert(0, 'Default Gamma = 6 cm-1 is a broader-loss modelling assumption, not the Tiwald sample-9 measurement. The exact narrow lattice fit is an alternative.')
+M['SiC4H']['alternatives']['gamma6_sensitivity'] = dict(
+    **uni(tolo(6.6, [(797.0, 970.0, 6.0)]), tolo(6.9, [(782.0, 964.0, 6.0)])),
+    valid_range_cm1=[700, 4000], note='Previous default: broader-loss modelling assumption, not a Tiwald sample measurement.')
+M['SiC4H']['notes'].insert(0, 'Default is the Tiwald sample-9 lattice fit, Gamma = 1.4 cm-1. Previous Gamma = 6 assumption is retained as gamma6_sensitivity.')
 for nm in ('SiC4H', 'SiC6H'):
     M[nm]['valid_range_cm1'] = [700, 4000]
     M[nm]['notes'].append('Lattice-only approximation in the source measurement band; carriers and multiphonon absorption are omitted. This is not the full measured dielectric response.')
@@ -363,6 +367,55 @@ M['Ga2O3_beta']['references'] = refs('Schubert2016_preprint', 'Schubert2016_publ
 M['Ga2O3_beta']['notes'].append('Default contains the preprint lattice response only; the source samples also have free-carrier contributions.')
 M['GaAs']['references'] += refs('Skauli2003')
 M['InAs']['references'] += refs('Lorimor1965')
+# --- SiC experimental defaults, checked against Pitman's author files (2026-10-06) ---
+M['SiC3C']['alternatives']['legacy_gamma3'] = dict(
+    **M['SiC3C']['axes']['iso'], valid_range_cm1=[100, 5000],
+    note='Previous mixed-source default: assumed Gamma = 3 cm-1, not a Pitman experimental fit.')
+M['SiC3C']['axes'] = dict(iso=dict(type='lorentz', eps_inf=7.0756,
+    oscillators=[dict(w0=797.5, strength=3.5, gamma=6.0)]))
+M['SiC3C']['valid_range_cm1'] = [50, 4000]
+M['SiC3C']['status'] = 'verified'
+M['SiC3C']['references'] = refs('Pitman2008', 'Pitman2008_data', 'PatrickChoyke1970', 'Olego1982', 'Mutschke1999', used={
+    'Pitman2008': 'Default single-oscillator reflectance fit, Fig. 7 and Section 4.2.',
+    'Pitman2008_data': 'betaSiC_nk_1osc_hires.txt; eps_inf = 7.0756 reproduces the author dielectric data.',
+    'PatrickChoyke1970': 'Legacy alternatives only.', 'Olego1982': 'Legacy alternatives only.', 'Mutschke1999': 'Legacy damping context only.'})
+M['SiC3C']['notes'] = [
+    'Pitman 3C CVD wafer single-oscillator fit: TO 797.5, FWHM 6.0 cm-1, strength 3.5, eps_inf 7.0756. Undamped LO derived from the complete fit is approximately 975 cm-1.',
+    'Library gamma equals the reported FWHM in cm-1, not the paper coefficient Gamma = 2*pi*FWHM. Default matches the author dielectric-function file, rather than changing damping alone.',
+    'Room-temperature phonon fit in the measured far/mid-IR band (50-4000 cm-1); weak features and higher-frequency electronic dispersion are not included. Legacy alternatives retain their original parameters.']
+M['SiC6H']['alternatives'] = dict(Tiwald1999_sample7=dict(
+    **M['SiC6H']['axes'], valid_range_cm1=[700, 4000],
+    note='Previous default: sample-7 lattice fit, Gamma = 2.7 cm-1. Measured carrier density 2e17 cm-3; Drude and multiphonon contributions are omitted.'))
+M['SiC6H']['axes'] = uni(
+    dict(type='lorentz', eps_inf=7.04, oscillators=[dict(w0=797.5, strength=3.33, gamma=5.3)]),
+    dict(type='lorentz', eps_inf=8.8, oscillators=[dict(w0=787.8, strength=4.45, gamma=5.5)]))
+M['SiC6H']['valid_range_cm1'] = [50, 4000]
+M['SiC6H']['status'] = 'verified'
+M['SiC6H']['references'] = refs('Pitman2008', 'Pitman2008_data', 'Tiwald1999', used={
+    'Pitman2008': 'Gray 6H polarized single-oscillator fits, Section 4.2 and Figs. 3-4.',
+    'Pitman2008_data': 'Ordinary single-oscillator data are in grayalphaSiC_E_perp_c_nk_2osc_hires.txt (header: 7.04 797.5 5.3 3.33); extraordinary: grayalphaSiC_E_par_c_nk_1osc_hires.txt.',
+    'Tiwald1999': 'Sample-7 lattice-only alternative; carrier-dependent ellipsometry context.'})
+M['SiC6H']['notes'] = [
+    'Pitman gray 6H single-oscillator fits: E perpendicular c has eps_inf 7.04, TO 797.5, strength 3.33, FWHM 5.3; E parallel c has eps_inf 8.8, TO 787.8, strength 4.45, FWHM 5.5 (cm-1).',
+    'Library gamma = FWHM, not 2*pi*FWHM. Full complex curves checked against the author dielectric files. Ordinary author filenames for 1osc and 2osc are interchanged; select by the numeric header and curve.',
+    'Extraordinary TO 787.8 follows Section 4.2 and author data; Fig. 3 caption instead prints 787.5. Use the author curve, including its eps_inf, rather than mixing Tiwald TO/LO with Pitman linewidths.',
+    'Room-temperature reflectance-derived phonon fit in the measured far/mid-IR band (50-4000 cm-1). The single-oscillator fits omit weak folded modes; these values describe this specimen, not all 6H samples.']
+# Klein reports a scalar fit, not separate ordinary/extraordinary parameters.
+for alternative in M['SiC4H']['alternatives'].values():
+    alternative.update(tensor='uniaxial', frame=dict(z='c axis'))
+M['SiC4H']['tensor'] = 'isotropic'
+M['SiC4H'].pop('frame')
+M['SiC4H']['axes'] = dict(iso=tolo(6.56, [(796.0, 971.0, 2.9, 3.0)]))
+M['SiC4H']['valid_range_cm1'] = [600, 1200]
+M['SiC4H']['references'] = refs('Klein2025', 'Tiwald1999', used={
+    'Klein2025': 'Default scalar reflectance fit, Eq. 1 and Fig. 2: eps_inf 6.56, TO 796, LO 971, gamma_TO 2.9, gamma_LO 3.0 cm-1.',
+    'Tiwald1999': 'Anisotropic sample-9 lattice alternative only.'})
+M['SiC4H']['notes'] = [
+    'Klein 2025: commercial semi-insulating 4H-SiC wafer from MSE Supplies, thickness 500 micrometres. FTIR reflectance fitted with the factorized TO-LO model (Eq. 1). eps_inf 6.56 is adopted from Harima 1995; TO, LO and damping are fitted.',
+    'The source reports one scalar permittivity. The default follows that isotropic approximation; it does not establish equal measured ordinary and extraordinary responses of the intrinsically uniaxial 4H crystal. Use Tiwald1999_sample9 for the retained anisotropic lattice fit.',
+    'Separate gamma_TO = 2.9 and gamma_LO = 3.0 cm-1 map directly to the library exp(-i omega t) convention. Do not replace them with one common damping.',
+    'Declared 600-1200 cm-1 band follows Fig. 2; the source does not validate the former 700-4000 cm-1 range for this fit. No Drude or multiphonon terms are included.',
+    'gamma6_sensitivity retains the older anisotropic Gamma = 6 modelling assumption; it has no specific experimental reference. Alternatives carry their own tensor, frame and range.']
 # Table bounds are actual data coverage; zero entries do not establish an absorption floor.
 for material in M.values():
     tables = [axis for axis in material.get('axes', {}).values() if axis.get('type') == 'table']

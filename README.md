@@ -8,6 +8,22 @@ A built-in catalog of 45 sourced infrared material definitions. The source data 
 python -m pip install .
 ```
 
+To replace an installed copy with this local checkout, activate the Python
+environment used by your app or notebook, then run:
+
+```bash
+python -m pip install --no-deps --no-build-isolation -e "/Users/edoardovicentini/Documents/GitHub/Materials_Library"
+python -c "import materials_library; print(materials_library.__file__); print(materials_library.load('SiC3C')['axes'])"
+```
+
+This assumes the environment already has the library dependencies and setuptools
+from its original installation. Editable installation makes subsequent local
+data changes available without reinstalling. Restart Streamlit or your notebook
+kernel afterward. SNOM_calculator pins a GitHub copy of this dependency; installing
+the app's requirements again can replace the local installation, so run the local
+install command last. For a regular, non-editable reinstall, replace `-e` with
+`--force-reinstall` in the command above.
+
 ```python
 from materials_library import names, load, eps_tensor, sheet_conductivity
 
@@ -52,3 +68,6 @@ work, cite the original source paper, not this repository.
 ## Parameter review
 
 See the [2026-10-01 parameter review](reports/MATERIAL_PARAMETER_REVIEW_2026-10-01.md) for evidence, alternatives and unresolved references. Status labels describe source fidelity; they do not certify every specimen or frequency. Declared ranges are advisory: the evaluator permits extrapolation and clamps tables. Zero-loss table rows do not establish a measured absorption floor. Run `python reports/audit_parameters.py` to reproduce the current numerical checks.
+
+The [2026-10-06 SiC update](reports/SIC_UPDATE_2026-10-06.md) records the experimental
+defaults, numerical changes, retained alternatives, and reference access checks.

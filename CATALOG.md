@@ -53,9 +53,9 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | [`InN`](src/materials_library/materials/InN.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | modelled | Kasic2002; Reparaz2018 |
 | [`MgO`](src/materials_library/materials/MgO.yaml) | isotropic | lorentz | 100–2000 | verified | Jasperse1966; Stephens1952 |
 | [`MoO3`](src/materials_library/materials/MoO3.yaml) | biaxial | TO-LO, 3 modes/axis | 400–1200 | verified | AlvarezPerez2020 |
-| [`SiC3C`](src/materials_library/materials/SiC3C.yaml) | isotropic | TO-LO, 1 mode/axis | 100–5000 | modified | PatrickChoyke1970; Olego1982; Mutschke1999; Pitman2008 |
-| [`SiC4H`](src/materials_library/materials/SiC4H.yaml) | uniaxial | TO-LO, 1 mode/axis | 700–4000 | modified | Tiwald1999 |
-| [`SiC6H`](src/materials_library/materials/SiC6H.yaml) | uniaxial | TO-LO, 1 mode/axis | 700–4000 | modified | Tiwald1999; PatrickChoyke1970 |
+| [`SiC3C`](src/materials_library/materials/SiC3C.yaml) | isotropic | Lorentz, 1 mode | 50–4000 | verified | Pitman2008; Pitman2008_data; legacy-source alternatives |
+| [`SiC4H`](src/materials_library/materials/SiC4H.yaml) | isotropic approximation | TO-LO, separate TO/LO damping | 600–1200 | modified | Klein2025; anisotropic Tiwald1999 alternative |
+| [`SiC6H`](src/materials_library/materials/SiC6H.yaml) | uniaxial | Lorentz, 1 mode/axis | 50–4000 | verified | Pitman2008; Pitman2008_data; Tiwald1999 alternative |
 | [`V2O5`](src/materials_library/materials/V2O5.yaml) | biaxial | TO-LO, 1 mode/axis | 400–1200 | partial | TaboadaGutierrez2020 |
 | [`ZnO`](src/materials_library/materials/ZnO.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Ashkenov2003; Querry1985 |
 
@@ -120,6 +120,7 @@ References used by the active material definitions, including alternatives and c
 | Jasperse1966 | J. R. Jasperse, A. Kahan, J. N. Plendl, S. S. Mitra, Phys. Rev. 146, 526 (1966), Tables I-II (295 K) | [Source](https://doi.org/10.1103/PhysRev.146.526) |
 | Kaiser1962 | W. Kaiser, W. G. Spitzer, R. H. Kaiser, L. E. Howarth, Phys. Rev. 127, 1950 (1962) | [Source](https://github.com/polyanskiy/refractiveindex.info-scripts) |
 | Kasic2000 | A. Kasic, M. Schubert, S. Einfeldt, D. Hommel, T. E. Tiwald, Phys. Rev. B 62, 7365 (2000), Tables I-III (sample A) | [Source](https://doi.org/10.1103/PhysRevB.62.7365) |
+| Klein2025 | M. Klein, Y. Gershuni, A. Perutski, J.-P. Hugonin, I. Epstein, Nanometer-Scale Cavities for Mid-Infrared Radiation via Image Phonon Polariton Resonators, Nano Lett. 25, 8999–9005 (2025), Eq. 1, Fig. 2 and Methods | [DOI](https://doi.org/10.1021/acs.nanolett.5c01352) · [Accessible arXiv v2](https://arxiv.org/html/2503.04168v2) |
 | Kasic2002 | A. Kasic, M. Schubert, Y. Saito, Y. Nanishi, G. Wagner, Effective electron mass and phonon modes in n-type hexagonal InN, Phys. Rev. B 65, 115206 (2002) | [Source](https://doi.org/10.1103/PhysRevB.65.115206) |
 | Kischkat2012 | J. Kischkat et al., Mid-infrared optical properties of thin films of Al2O3, TiO2, SiO2, AlN and Si3N4, Appl. Opt. 51, 6789 (2012) | [Source](https://doi.org/10.1364/AO.51.006789) |
 | Lane1999 | M. D. Lane, J. Geophys. Res. Planets 104, 14099 (1999), Table 1 | [Source](https://doi.org/10.1029/1999JE900025) |
@@ -136,7 +137,8 @@ References used by the active material definitions, including alternatives and c
 | Olego1982 | D. Olego et al. (1982), Raman — via Ioffe NSM | — |
 | Olmon2012 | R. L. Olmon et al., Optical dielectric function of gold, Phys. Rev. B 86, 235147 (2012) | [Source](https://doi.org/10.1103/PhysRevB.86.235147) |
 | PatrickChoyke1970 | L. Patrick, W. J. Choyke (1970) — via Ioffe NSM | [Source](https://www.ioffe.ru/SVA/NSM/Semicond/SiC/optic.html) |
-| Pitman2008 | K. M. Pitman et al., A&A 483, 661 (2008) (3C-SiC) | [Source](https://arxiv.org/abs/0803.1210) |
+| Pitman2008 | K. M. Pitman, A. M. Hofmeister, A. B. Corman, A. K. Speck, Optical properties of silicon carbide for astrophysical applications. I. New laboratory infrared reflectance spectra and optical constants, A&A 483, 661–672 (2008), Section 4.2 and Figs. 3, 4, 7 (3C and 6H) | [DOI](https://doi.org/10.1051/0004-6361:20078468) · [Full text](https://arxiv.org/html/0803.1210) |
+| Pitman2008_data | Author-hosted high-resolution classical-dispersion dielectric-function files | [Data and descriptions](https://epsc.wustl.edu/~hofmeist/spectra/IRSiC/) |
 | Popova1972 | S. Popova, T. Tolstykh, V. Vorobev, Opt. Spectrosc. 33, 444 (1972) (amorphous quartz) | — |
 | Querry1985 | M. R. Querry, Optical constants, Contractor Report CRDC-CR-85034 (1985) | — |
 | Querry1987 | M. R. Querry, Optical constants of minerals and other materials..., CRDEC-CR-88009 (1987) | — |
@@ -148,7 +150,7 @@ References used by the active material definitions, including alternatives and c
 | Skauli2003 | T. Skauli et al., J. Appl. Phys. 94, 6447 (2003) (GaAs) | — |
 | Stephens1952 | R. E. Stephens, I. H. Malitson, J. Res. Natl. Bur. Stand. 49, 249 (1952) | — |
 | TaboadaGutierrez2020 | J. Taboada-Gutiérrez et al., Nat. Mater. (2020) (alpha-V2O5), Methods section of the arXiv version | [Source](https://arxiv.org/abs/2501.08705) |
-| Tiwald1999 | T. E. Tiwald, J. A. Woollam, S. Zollner et al., Phys. Rev. B 60, 11464 (1999), Table I | [Source](https://doi.org/10.1103/PhysRevB.60.11464) |
+| Tiwald1999 | T. E. Tiwald et al., Carrier concentration and lattice absorption in bulk and epitaxial silicon carbide determined using infrared ellipsometry, Phys. Rev. B 60, 11464–11474 (1999), Table I and Eq. 3 | [DOI](https://doi.org/10.1103/PhysRevB.60.11464) · [University repository](https://digitalcommons.unl.edu/electricalengineeringfacpub/27/) |
 | Tsuda2018 | S. Tsuda et al., Opt. Express 26, 6899 (2018) (PMMA Lorentz–Drude fit) | [Source](https://github.com/polyanskiy/refractiveindex.info-scripts) |
 | Winta2019 | C. J. Winta et al., Low-temperature infrared dielectric function of hyperbolic alpha-quartz, arXiv:1902.03072 (2019), Tables I-II | [Source](https://arxiv.org/abs/1902.03072) |
 | Yang2015 | H. U. Yang et al., Optical dielectric function of silver, Phys. Rev. B 91, 235137 (2015) | [Source](https://nano-optics.colorado.edu/wp-content/uploads/2020/06/Yang_PhysRevB_15_MainText.pdf) |
