@@ -1,6 +1,6 @@
 # Materials Library
 
-A built-in catalog of 45 sourced infrared material definitions. The source data and model details are in [CATALOG.md](CATALOG.md).
+A built-in catalog of 49 sourced infrared material definitions. The source data and model details are in [CATALOG.md](CATALOG.md).
 
 ## Install and use
 

@@ -416,6 +416,74 @@ M['SiC4H']['notes'] = [
     'Separate gamma_TO = 2.9 and gamma_LO = 3.0 cm-1 map directly to the library exp(-i omega t) convention. Do not replace them with one common damping.',
     'Declared 600-1200 cm-1 band follows Fig. 2; the source does not validate the former 700-4000 cm-1 range for this fit. No Drude or multiphonon terms are included.',
     'gamma6_sensitivity retains the older anisotropic Gamma = 6 modelling assumption; it has no specific experimental reference. Alternatives carry their own tensor, frame and range.']
+# ============================================================= s-SNOM additions (2026-10-13)
+R.update({
+ 'DiazNunez2025': dict(citation='P. Díaz-Núñez et al., Visualization of topological shear polaritons in gypsum thin films, Science Advances 11, eadw3452 (2025); coefficients checked in author SI Tables S1-S2', doi='10.1126/sciadv.adw3452', url='https://arxiv.org/pdf/2501.19242'),
+ 'Aronson1983': dict(citation='J. R. Aronson et al., Optical constants of monoclinic anisotropic crystals: gypsum, Applied Optics 22, 4093-4098 (1983)', doi='10.1364/AO.22.004093'),
+ 'Feres2025': dict(citation='F. H. Feres et al., Two-dimensional talc as a natural abundant ultra-broadband hyperbolic material, Nanoscale 17, 24151-24160 (2025), Supporting Information S1, Eq. S1', doi='10.1039/D5NR02966J', url='https://www.rsc.org/suppdata/d5/nr/d5nr02966j/d5nr02966j1.pdf'),
+ 'Barcelos2018': dict(citation='I. D. Barcelos et al., Infrared Fingerprints of Natural 2D Talc and Plasmon-Phonon Coupling in Graphene-Talc Heterostructures, ACS Photonics 5, 1912-1918 (2018)', doi='10.1021/acsphotonics.7b01017'),
+ 'Kamaras1995': dict(citation='K. Kamarás et al., The low-temperature infrared optical functions of SrTiO3 determined by reflectance spectroscopy and spectroscopic ellipsometry, J. Appl. Phys. 78, 1235-1240 (1995), Eq. 4 and Table I, 300 K', doi='10.1063/1.360364', url='https://real.mtak.hu/6092/1/1170300.pdf'),
+ 'Xu2024': dict(citation='R. Xu et al., Highly confined epsilon-near-zero and surface phonon polaritons in SrTiO3 membranes, Nature Communications 15, 4743 (2024)', doi='10.1038/s41467-024-47917-x'),
+ 'Santos2026': dict(citation='C. N. Santos et al., High quality-factor terahertz phonon-polaritons in layered lead iodide, Nature Communications 17, 2356 (2026), SI Eq. S4, Table 3 and loss discussion', doi='10.1038/s41467-026-69027-6', url='https://www.nature.com/articles/s41467-026-69027-6'),
+ 'Lucovsky1976': dict(citation='G. Lucovsky, R. M. White, W. Y. Liang, R. Zallen, P. Schmid, The lattice polarizability of PbI2, Solid State Communications 18, 811-814 (1976); historical source cited by Santos2026'),
+ 'Lucovsky1977': dict(citation='G. Lucovsky, R. M. White, Optical-Phonon Anisotropies in Layered Crystals, Il Nuovo Cimento B 38, 290-300 (1977); historical source cited by Santos2026', doi='10.1007/BF02723498'),
+})
+
+gypsum_xy = [
+    (3406.3, .01064, .04313, 85.04), (1619.8, .00736, .02079, 77.59),
+    (1138.2, .01295, .26264, 4.93), (1110.2, .00797, .28429, 99.87),
+    (667.4, .01027, .12195, -7.90), (598.3, .02559, .16739, 87.30),
+    (465.2, .15923, .92815, -19.05)]
+gypsum_z = [
+    (3525.8, .01768, .05719), (1684.5, .00955, .00716),
+    (1124.3, .00985, .13638), (1118.6, .00945, .13921),
+    (601.3, .05583, .24471), (544.9, .02050, .00798)]
+add('Gypsum', tensor='monoclinic', status='verified', valid_range_cm1=[1080, 1220],
+    frame=dict(x='crystal a axis', y='perpendicular to a and b in the a-c plane', z='crystal b axis; normal to exfoliated (010) layers'),
+    model=dict(eps_inf=[[2.2819, .0086, 0], [.0086, 2.4545, 0], [0, 0, 2.223]],
+               oscillators=[mono_osc(float(t*np.sqrt(s)), t, g*t, alpha=a) for t, g, s, a in gypsum_xy]
+                           + [mono_osc(float(t*np.sqrt(s)), t, g*t, sym='Au') for t, g, s in gypsum_z]),
+    references=refs('DiazNunez2025', 'Aronson1983', used={
+        'DiazNunez2025': 's-SNOM application and inspected author SI Tables S1-S2; all 13 oscillators and background tensor.',
+        'Aronson1983': 'Original optical constants, as transcribed in DiazNunez2025 SI; original table not independently rechecked.'}),
+    notes=['Calcium sulphate dihydrate, CaSO4.2H2O; preserve hydration and axis convention.',
+           'Source dimensionless strength S and damping g converted to amplitude A = TO*sqrt(S), gamma = g*TO; imaginary sign conjugated for exp(-i omega t). Angles are measured from a.',
+           'Declared band follows the SI Fig. S2 reproduction. All source modes retained for their background contributions.'])
+
+add('talc', tensor='uniaxial', status='verified', valid_range_cm1=[900, 1100],
+    frame=dict(x='in-plane', y='in-plane', z='normal to layers'),
+    axes=uni(tolo(2.5, [(1011, 1041, 5)]), tolo(2.5, [(948, 1002, 8)])),
+    references=refs('Feres2025', 'Barcelos2018', used={
+        'Feres2025': 's-SNOM application and published SI S1: complete two-band model.',
+        'Barcelos2018': 'Earlier nano-FTIR work cited as the parameter origin by Feres2025; numeric transcription taken from Feres2025 SI.'}),
+    notes=['Mg3Si4O10(OH)2. Source uses a uniaxial approximation to triclinic talc: equal in-plane components.',
+           'Declared 900-1100 cm-1 is a conservative library mid-IR application band, not a universal experimental validity interval. This two-mode fit omits the far-IR bands near 520 cm-1.'])
+
+add('SrTiO3', tensor='isotropic', status='verified', valid_range_cm1=[40, 1800],
+    axes=dict(iso=tolo(5.1, [(91, 172, 15.0, 3.8), (175, 474, 5.4, 4.5), (543, 788, 17.0, 25.0)])),
+    references=refs('Kamaras1995', 'Xu2024', used={
+        'Kamaras1995': 'All coefficients: Table I, 300 K column and factorized Eq. 4.',
+        'Xu2024': 's-SNOM community application only; membrane properties are not claimed to equal this bulk fit.'}),
+    notes=['Undoped bulk cubic SrTiO3 at 300 K; excludes carriers, LAO/STO interfacial 2DEG, strain and other temperatures.',
+           'Source +i damping is conjugated to the library convention; distinct TO/LO widths retained.',
+           'Source fits 40-2000 cm-1. Library restricts to 40-1800 because the analytic fit has a small negative-loss tail above about 1868 cm-1; published coefficients are unchanged.'])
+
+_pbi2_o = dict(type='lorentz', eps_inf=6.1, oscillators=[dict(w0=52, strength=19.3, gamma=.09*52)])
+_pbi2_e = dict(type='lorentz', eps_inf=5.9, oscillators=[dict(w0=96, strength=3.4, gamma=.21*96)])
+add('PbI2', tensor='uniaxial', status='verified', valid_range_cm1=[40, 140],
+    frame=dict(x='in-plane', y='in-plane', z='c axis; normal to layers'), axes=uni(_pbi2_o, _pbi2_e),
+    alternatives=dict(near_field_Santos2026=dict(tensor='uniaxial', valid_range_cm1=[40, 140],
+        frame=dict(z='c axis; normal to layers'),
+        axes=uni(dict(type='lorentz', eps_inf=6.1, oscillators=[dict(w0=52, strength=19.3, gamma=.02*52)]), _pbi2_e),
+        note='Santos near-field loss fit: in-plane dimensionless Gamma = 0.02; all other coefficients unchanged.')),
+    references=refs('Santos2026', 'Lucovsky1976', 'Lucovsky1977', used={
+        'Santos2026': 'Inspected SI Eq. S4/Table 3 for baseline coefficients; main-text lower-loss near-field fit for alternative.',
+        'Lucovsky1976': 'Historical optical source cited by Santos2026; coefficients transcribed from Santos SI, not independently from the 1976 article.',
+        'Lucovsky1977': 'Second historical optical source cited by Santos2026 SI; original table not independently rechecked.'}),
+    notes=['Layered lead iodide THz phonon fit. Range follows SI Fig. 4; not an electronic/visible model.',
+           'Source Gamma is dimensionless: gamma = Gamma*TO, giving 4.68 and 20.16 cm-1. Use additive strengths from Table 3; do not combine them with its separately listed LO values.',
+           'Default retains the historical far-field loss baseline. Lower-loss near-field alternative is specimen dependent and must be selected explicitly.'])
+
 # Table bounds are actual data coverage; zero entries do not establish an absorption floor.
 for material in M.values():
     tables = [axis for axis in material.get('axes', {}).values() if axis.get('type') == 'table']

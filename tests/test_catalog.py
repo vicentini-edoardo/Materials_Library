@@ -37,6 +37,53 @@ def test_catalog_regeneration_preserves_definitions():
         assert load(name) == generated[name], name
 
 
+def test_gypsum_matches_source_tensor():
+    # Tables S1/S2, Diaz-Nunez author SI: normalized Lorentzians and trig dyads
+    # evaluated independently at 1180 cm-1, conjugated to exp(-i omega t).
+    expected = [[-1.364596081288786 + .6220480917273349j,
+                 .1569493045696492 + .024412862288447714j, 0],
+                [.1569493045696492 + .024412862288447714j,
+                 .324781148351048 + .14593087439016417j, 0],
+                [0, 0, -.3404103342060644 + .24751474578938246j]]
+    np.testing.assert_allclose(eps_tensor(load("Gypsum"), [1180])[0], expected, atol=1e-12)
+
+
+def test_talc_matches_published_two_band_model():
+    w = np.array([960, 1020])
+    response = eps_tensor(load("talc"), w)
+    ordinary = 2.5 * (1041**2 - w**2 - 5j*w) / (1011**2 - w**2 - 5j*w)
+    extraordinary = 2.5 * (1002**2 - w**2 - 8j*w) / (948**2 - w**2 - 8j*w)
+    np.testing.assert_allclose(response[:, 0, 0], ordinary)
+    np.testing.assert_allclose(response[:, 1, 1], ordinary)
+    np.testing.assert_allclose(response[:, 2, 2], extraordinary)
+    assert ordinary[1].real < 0 < extraordinary[1].real
+    assert extraordinary[0].real < 0 < ordinary[0].real
+
+
+def test_srtio3_matches_kamaras_300k_fit():
+    expected = [-7.6105520173608525 + 1.7121700537150712j,
+                -1.8617279064273575 + .3892940177287606j]
+    response = eps_tensor(load("SrTiO3"), [600, 700])
+    for axis in range(3):
+        np.testing.assert_allclose(response[:, axis, axis], expected, atol=1e-12)
+
+
+def test_pbi2_normalized_widths_and_near_field_alternative():
+    from copy import deepcopy
+
+    material = load("PbI2")
+    baseline = eps_tensor(material, [52, 96])
+    # At resonance, Im eps = S/Gamma for the source's dimensionless Gamma.
+    assert baseline[0, 0, 0] == pytest.approx(6.1 + 1j*19.3/.09)
+    assert baseline[1, 2, 2] == pytest.approx(5.9 + 1j*3.4/.21)
+    near_field = deepcopy(material)
+    near_field["axes"] = material["alternatives"]["near_field_Santos2026"]["axes"]
+    response = eps_tensor(near_field, [52, 96])
+    assert response[0, 0, 0] == pytest.approx(6.1 + 1j*19.3/.02)
+    np.testing.assert_allclose(response[:, 2, 2], baseline[:, 2, 2])
+    assert np.linalg.eigvalsh(response.imag).min() >= 0
+
+
 def test_default_bulk_models_are_passive_in_declared_range():
     for name in names():
         material = load(name)
@@ -58,10 +105,11 @@ def test_tables_have_strictly_increasing_frequencies():
 
 def test_all_packaged_materials_evaluate():
     catalog = names()
-    assert len(catalog) == 45
+    assert len(catalog) == 49
     assert "BaTiO3" not in catalog
-    assert "SrTiO3" not in catalog
+    assert {"Gypsum", "talc", "SrTiO3", "PbI2"} <= set(catalog)
     assert "CdO_doped" not in catalog
+    assert "GaN_doped" not in catalog
     for name in catalog:
         material = load(name)
         assert material["status"] != "pending", name

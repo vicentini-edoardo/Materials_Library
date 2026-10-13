@@ -1,6 +1,6 @@
 # Built-in optical material catalog
 
-45 infrared materials for anisotropic transfer-matrix / s-SNOM simulations. Every parameter carries its reference, and nothing depends on pyGTM (GPL-3.0). Tabulated data come from the public-domain (CC0) [refractiveindex.info database](https://github.com/polyanskiy/refractiveindex.info-database).
+49 infrared materials for anisotropic transfer-matrix / s-SNOM simulations. Every parameter carries its reference, and nothing depends on pyGTM (GPL-3.0). Tabulated data come from the public-domain (CC0) [refractiveindex.info database](https://github.com/polyanskiy/refractiveindex.info-database).
 
 ## Layout
 
@@ -46,6 +46,7 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | [`GaAs`](src/materials_library/materials/GaAs.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | modified | Lockwood2005; Skauli2003 |
 | [`GaN`](src/materials_library/materials/GaN.yaml) | uniaxial | TO-LO, 1 mode/axis | 300–1200 | modified | Kasic2000; Barker1973 |
 | [`GaP`](src/materials_library/materials/GaP.yaml) | isotropic | TO-LO, 1 mode/axis | 50–5000 | modified | Lockwood2005 |
+| [`Gypsum`](src/materials_library/materials/Gypsum.yaml) | monoclinic | 13 rank-1 oscillators + ε∞ tensor | 1080–1220 | verified | DiazNunez2025; Aronson1983 |
 | [`hBN`](src/materials_library/materials/hBN.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Giles2018 |
 | [`hBN_10B`](src/materials_library/materials/hBN_10B.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Giles2018 |
 | [`hBN_11B`](src/materials_library/materials/hBN_11B.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Giles2018 |
@@ -53,9 +54,12 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | [`InN`](src/materials_library/materials/InN.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | modelled | Kasic2002; Reparaz2018 |
 | [`MgO`](src/materials_library/materials/MgO.yaml) | isotropic | lorentz | 100–2000 | verified | Jasperse1966; Stephens1952 |
 | [`MoO3`](src/materials_library/materials/MoO3.yaml) | biaxial | TO-LO, 3 modes/axis | 400–1200 | verified | AlvarezPerez2020 |
+| [`PbI2`](src/materials_library/materials/PbI2.yaml) | uniaxial | Lorentz, 1 mode/axis; near-field loss alternative | 40–140 | verified | Santos2026; Lucovsky1976; Lucovsky1977 |
 | [`SiC3C`](src/materials_library/materials/SiC3C.yaml) | isotropic | Lorentz, 1 mode | 50–4000 | verified | Pitman2008; Pitman2008_data; legacy-source alternatives |
 | [`SiC4H`](src/materials_library/materials/SiC4H.yaml) | isotropic approximation | TO-LO, separate TO/LO damping | 600–1200 | modified | Klein2025; anisotropic Tiwald1999 alternative |
 | [`SiC6H`](src/materials_library/materials/SiC6H.yaml) | uniaxial | Lorentz, 1 mode/axis | 50–4000 | verified | Pitman2008; Pitman2008_data; Tiwald1999 alternative |
+| [`SrTiO3`](src/materials_library/materials/SrTiO3.yaml) | isotropic | TO-LO, 3 modes, 300 K | 40–1800 | verified | Kamaras1995; Xu2024 application |
+| [`talc`](src/materials_library/materials/talc.yaml) | uniaxial approximation | TO-LO, 1 mode/axis | 900–1100 | verified | Feres2025; Barcelos2018 |
 | [`V2O5`](src/materials_library/materials/V2O5.yaml) | biaxial | TO-LO, 1 mode/axis | 400–1200 | partial | TaboadaGutierrez2020 |
 | [`ZnO`](src/materials_library/materials/ZnO.yaml) | uniaxial | TO-LO, 1 mode/axis | 100–5000 | verified | Ashkenov2003; Querry1985 |
 
@@ -106,19 +110,24 @@ References used by the active material definitions, including alternatives and c
 | Key | Reference | Link |
 |---|---|---|
 | AlvarezPerez2020 | G. Álvarez-Pérez et al., Adv. Mater. 32, 1908176 (2020) (alpha-MoO3), Table 1 | [Source](https://arxiv.org/abs/1912.06267) |
+| Aronson1983 | J. R. Aronson et al., Optical constants of monoclinic anisotropic crystals: gypsum, Applied Optics 22, 4093–4098 (1983); original source cited in Díaz-Núñez SI | [DOI](https://doi.org/10.1364/AO.22.004093) |
+| Barcelos2018 | I. D. Barcelos et al., Infrared Fingerprints of Natural 2D Talc and Plasmon–Phonon Coupling in Graphene–Talc Heterostructures, ACS Photonics 5, 1912–1918 (2018) | [DOI](https://doi.org/10.1021/acsphotonics.7b01017) |
 | Ashkenov2003 | N. Ashkenov et al., J. Appl. Phys. 93, 126 (2003), Tables I-II | [Source](https://doi.org/10.1063/1.1526935) |
 | Barker1973 | A. S. Barker, M. Ilegems, Phys. Rev. B 7, 743 (1973), Tables I-II | [Source](https://doi.org/10.1103/PhysRevB.7.743) |
 | Beaini2020 | R. Beaini et al., Sol. Energy Mater. Sol. Cells 205, 110260 (2020) (70 nm VO2 film on SiO2) | — |
 | ChandlerHorowitz2005 | D. Chandler-Horowitz, P. M. Amirtharaj, J. Appl. Phys. 97, 123526 (2005) | [Source](https://doi.org/10.1063/1.1923612) |
 | Derkachova2016 | A. Derkachova, K. Kolwas, I. Demchenko, Plasmonics 11, 941 (2016) | [Source](https://doi.org/10.1007/s11468-015-0128-7) |
+| DiazNunez2025 | P. Díaz-Núñez et al., Visualization of topological shear polaritons in gypsum thin films, Science Advances 11, eadw3452 (2025); coefficients from author SI Tables S1–S2 | [DOI](https://doi.org/10.1126/sciadv.adw3452) · [Author manuscript + SI](https://arxiv.org/pdf/2501.19242) |
 | Dore1998 | P. Dore et al., Appl. Opt. 37, 5731 (1998) (CVD diamond) | [Source](https://doi.org/10.1364/AO.37.005731) |
 | Falkovsky2008 | L. A. Falkovsky, Optical properties of graphene, J. Phys.: Conf. Ser. 129, 012004 (2008) | [Source](https://arxiv.org/abs/0806.3663) |
+| Feres2025 | F. H. Feres et al., Two-dimensional talc as a natural abundant ultra-broadband hyperbolic material, Nanoscale 17, 24151–24160 (2025), SI S1 | [DOI](https://doi.org/10.1039/D5NR02966J) · [Published SI](https://www.rsc.org/suppdata/d5/nr/d5nr02966j/d5nr02966j1.pdf) |
 | Franta2016 | D. Franta et al., Proc. SPIE 9890, 989014 (2016) (fused silica) | [Source](https://doi.org/10.1117/12.2227580) |
 | Frantz2023 | J. A. Frantz et al., Opt. Mater. Express 13, 3631 (2023) (Ge2Sb2Te5) | — |
 | GervaisPiriou1975 | F. Gervais, B. Piriou, Phys. Rev. B 11, 3944 (1975), Tables I-II (T = 295 K rows) | [Source](https://doi.org/10.1103/PhysRevB.11.3944) |
 | Giles2018 | A. J. Giles et al., Nat. Mater. 17, 134 (2018) (hBN isotopes), SI Table S4 | [Source](https://fogler.physics.ucsd.edu/bib/Gilles2018ULP.pdf) |
 | Jasperse1966 | J. R. Jasperse, A. Kahan, J. N. Plendl, S. S. Mitra, Phys. Rev. 146, 526 (1966), Tables I-II (295 K) | [Source](https://doi.org/10.1103/PhysRev.146.526) |
 | Kaiser1962 | W. Kaiser, W. G. Spitzer, R. H. Kaiser, L. E. Howarth, Phys. Rev. 127, 1950 (1962) | [Source](https://github.com/polyanskiy/refractiveindex.info-scripts) |
+| Kamaras1995 | K. Kamarás et al., The low-temperature infrared optical functions of SrTiO3 determined by reflectance spectroscopy and spectroscopic ellipsometry, J. Appl. Phys. 78, 1235–1240 (1995), Eq. 4 and Table I | [DOI](https://doi.org/10.1063/1.360364) · [Open primary PDF](https://real.mtak.hu/6092/1/1170300.pdf) |
 | Kasic2000 | A. Kasic, M. Schubert, S. Einfeldt, D. Hommel, T. E. Tiwald, Phys. Rev. B 62, 7365 (2000), Tables I-III (sample A) | [Source](https://doi.org/10.1103/PhysRevB.62.7365) |
 | Klein2025 | M. Klein, Y. Gershuni, A. Perutski, J.-P. Hugonin, I. Epstein, Nanometer-Scale Cavities for Mid-Infrared Radiation via Image Phonon Polariton Resonators, Nano Lett. 25, 8999–9005 (2025), Eq. 1, Fig. 2 and Methods | [DOI](https://doi.org/10.1021/acs.nanolett.5c01352) · [Accessible arXiv v2](https://arxiv.org/html/2503.04168v2) |
 | Kasic2002 | A. Kasic, M. Schubert, Y. Saito, Y. Nanishi, G. Wagner, Effective electron mass and phonon modes in n-type hexagonal InN, Phys. Rev. B 65, 115206 (2002) | [Source](https://doi.org/10.1103/PhysRevB.65.115206) |
@@ -130,6 +139,8 @@ References used by the active material definitions, including alternatives and c
 | Lockwood2005 | D. J. Lockwood, G. Yu, N. L. Rowell, Solid State Commun. 136, 404 (2005), Table 2 (293 K) | [Source](https://doi.org/10.1016/j.ssc.2005.08.030) |
 | Lorimor1965 | O. G. Lorimor, W. G. Spitzer, J. Appl. Phys. 36, 1841 (1965) (InAs) | — |
 | Low2014 | T. Low et al., Plasmons and screening in monolayer and multilayer black phosphorus, Phys. Rev. Lett. 113, 106802 (2014) | [Source](https://arxiv.org/abs/1404.4035) |
+| Lucovsky1976 | G. Lucovsky, R. M. White, W. Y. Liang, R. Zallen, P. Schmid, The lattice polarizability of PbI2, Solid State Communications 18, 811–814 (1976) | Historical source cited in Santos SI; original table not rechecked |
+| Lucovsky1977 | G. Lucovsky, R. M. White, Optical-Phonon Anisotropies in Layered Crystals, Il Nuovo Cimento B 38, 290–300 (1977) | [DOI](https://doi.org/10.1007/BF02723498); original table not rechecked |
 | Ma2021 | W. Ma et al., Ghost hyperbolic surface polaritons in bulk anisotropic crystals, Nature 596, 362 (2021), Methods Eq. 4 (values from Hellwege et al. 1970) | [Source](https://doi.org/10.1038/s41586-021-03755-1) |
 | Mock2017 | A. Mock, R. Korlacki, S. Knight, M. Schubert, Phys. Rev. B 95, 165202 (2017), Tables II-IV | [Source](https://doi.org/10.1103/PhysRevB.95.165202) |
 | Moore2005 | W. J. Moore, J. A. Freitas, R. T. Holm, O. Kovalenkov, V. Dmitriev, Appl. Phys. Lett. 86, 141912 (2005), Table I | [Source](https://doi.org/10.1063/1.1899233) |
@@ -144,6 +155,7 @@ References used by the active material definitions, including alternatives and c
 | Querry1987 | M. R. Querry, Optical constants of minerals and other materials..., CRDEC-CR-88009 (1987) | — |
 | Reparaz2018 | J. S. Reparaz et al., Comparative study of the pressure dependence of optical-phonon transverse-effective charges and linewidths in wurtzite InN, Phys. Rev. B 98, 165204 (2018) | [Source](https://doi.org/10.1103/PhysRevB.98.165204) |
 | Rodney1956 | W. S. Rodney, I. H. Malitson, J. Opt. Soc. Am. 46, 956 (1956) (KRS-5) | [Source](https://doi.org/10.1364/JOSA.46.000956) |
+| Santos2026 | C. N. Santos et al., High quality-factor terahertz phonon-polaritons in layered lead iodide, Nature Communications 17, 2356 (2026), SI Eq. S4 and Table 3 | [DOI](https://doi.org/10.1038/s41467-026-69027-6) · [Published SI](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-69027-6/MediaObjects/41467_2026_69027_MOESM1_ESM.pdf) |
 | Schubert2000 | M. Schubert, T. E. Tiwald, C. M. Herzinger, Phys. Rev. B 61, 8187 (2000) (sapphire) | [Source](https://www.academia.edu/28131084/Infrared_dielectric_anisotropy_and_phonon_modes_of_sapphire) |
 | Schubert2016_preprint | Schubert et al., arXiv:1512.08590, earlier preprint fit (x parallel c) | [Source](https://arxiv.org/pdf/1512.08590) |
 | Schubert2016_published | Schubert et al., Phys. Rev. B 93, 125209 (2016), revised published fit (x parallel a); comparison only | [Source](https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevB.93.125209/fulltext) |
@@ -153,6 +165,7 @@ References used by the active material definitions, including alternatives and c
 | Tiwald1999 | T. E. Tiwald et al., Carrier concentration and lattice absorption in bulk and epitaxial silicon carbide determined using infrared ellipsometry, Phys. Rev. B 60, 11464–11474 (1999), Table I and Eq. 3 | [DOI](https://doi.org/10.1103/PhysRevB.60.11464) · [University repository](https://digitalcommons.unl.edu/electricalengineeringfacpub/27/) |
 | Tsuda2018 | S. Tsuda et al., Opt. Express 26, 6899 (2018) (PMMA Lorentz–Drude fit) | [Source](https://github.com/polyanskiy/refractiveindex.info-scripts) |
 | Winta2019 | C. J. Winta et al., Low-temperature infrared dielectric function of hyperbolic alpha-quartz, arXiv:1902.03072 (2019), Tables I-II | [Source](https://arxiv.org/abs/1902.03072) |
+| Xu2024 | R. Xu et al., Highly confined epsilon-near-zero and surface phonon polaritons in SrTiO3 membranes, Nature Communications 15, 4743 (2024); near-field application only | [DOI](https://doi.org/10.1038/s41467-024-47917-x) |
 | Yang2015 | H. U. Yang et al., Optical dielectric function of silver, Phys. Rev. B 91, 235137 (2015) | [Source](https://nano-optics.colorado.edu/wp-content/uploads/2020/06/Yang_PhysRevB_15_MainText.pdf) |
 
 ## Monoclinic materials: rotated diagonal matrices and Euler angles
@@ -183,13 +196,23 @@ Checks: Ga₂O₃ reproduces the paper's ε_DC (11.51, 11.89, 11.15, xy −0.05)
 
 For uniaxial crystals (calcite, quartz, hBN, sapphire…) the tensor is diagonal in the crystal frame at every frequency. A tilted optic axis, as in the ghost-polariton calcite cut, is just one global rotation of the whole tensor: an optic axis at polar angle θ from the surface normal (lab z) and in-plane azimuth φ_az (from lab x) is Euler (φ_az + 90°, θ, 0), because R ẑ = (sin θ cos φ_az, sin θ sin φ_az, cos θ) for that choice.
 
+## New s-SNOM models (October 2026)
+
+The five additions preserve all existing models, including SiC. References in each YAML distinguish the inspected numerical source from earlier optical work and near-field applications.
+
+- **Gypsum:** all 13 oscillators from the Díaz-Núñez author SI, including nonresonant contributions in the 1080–1220 cm⁻¹ plotting window. The source's dimensionless damping converts to γ = gω₀; rank-1 amplitudes are A = ω₀√S. The full off-diagonal tensor uses x = a and z = b. The original Aronson table was not independently rechecked.
+- **Talc:** the published Feres SI's two mid-IR bands, using its in-plane isotropic approximation to the triclinic crystal. The 900–1100 cm⁻¹ library band is conservative; the model omits the reported far-IR resonances near 520 cm⁻¹.
+- **SrTiO₃:** Kamarás Table I at 300 K, bulk undoped material. Separate TO/LO damping and published coefficients are retained. Although the source fitted 40–2000 cm⁻¹, the declared range ends at 1800 cm⁻¹ because the analytic fit becomes slightly nonpassive above about 1868 cm⁻¹. Xu's membrane work is an application reference, not a membrane-specific parameter fit.
+- **PbI₂:** Santos SI Table 3's additive Lorentz model, with dimensionless widths converted to 4.68/20.16 cm⁻¹. The baseline follows historical far-field losses; `near_field_Santos2026` reduces the in-plane width to 1.04 cm⁻¹. Select it explicitly by assigning the alternative's `axes` to a copy of the loaded material. The 40–140 cm⁻¹ range follows SI Fig. 4.
+
 ## Still to source
 
 | Material | What is missing | Lead |
 |---|---|---|
-| SrTiO₃ | LO modes, damping (ε∞ and 3 TO known) | not yet found in an open source |
+| SrTiO₃ variants | Temperature, doping, strain and membrane-specific fits | Current entry is undoped bulk at 300 K |
 | BaTiO₃ | Full phonon model, tetragonal anisotropy | — |
 | CdO (In:CdO) | Film damping (only in Fig. 4b / Supplement of Nolen 2020), LO phonon (Finkenrath et al., ref. 85 there) | Nolen et al., Phys. Rev. Mater. 4, 025202 (2020) Supplemental |
 | LaAlO₃, LiNbO₃, LiTaO₃ | IR phonon parameters | not searched yet |
 | ITO, AZO | Drude parameters (sample dependent) | — |
 | Bi₂Se₃ | THz phonons + Dirac plasmon | not searched yet |
+| MoOCl₂ | Out-of-plane εzz, missing from the inspected in-plane fit | Aghashirinov et al., Nat. Nanotechnol. (2026), DOI 10.1038/s41565-026-02243-9; do not assume a complete bulk tensor |
