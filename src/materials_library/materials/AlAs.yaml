@@ -3,6 +3,7 @@ name: AlAs
 status: modified
 tensor: isotropic
 valid_range_cm1: [50, 5000]
+sources: [Lockwood2005]
 axes:
   iso:
     type: tolo
@@ -17,6 +18,7 @@ alternatives:
     - {to: 360.04, lo: 399.59, gamma_to: 4.44, gamma_lo: 3.03}
     note: Exact Table 2 values (gamma_TO = 4.44, gamma_LO = 3.03). gamma_LO < gamma_TO violates the Lowndes condition, so Im(eps) turns slightly negative above the
       LO frequency (gain artefact in thick layers).
+    sources: [Lockwood2005]
 notes: ['Semi-insulating / low-doped bulk, 293 K. TO, LO and eps_inf (LST value, Lockwood column eps_inf^b) from Table 2.', Default uses one damping gamma = gamma_TO
     = 4.44 cm-1 for TO and LO so the model stays passive; the paper's separate gamma_LO = 3.03 cm-1 is kept under alternatives.Lockwood2005_exact.]
 references:

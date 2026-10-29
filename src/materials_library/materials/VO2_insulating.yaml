@@ -3,6 +3,7 @@ name: VO2_insulating
 status: verified
 tensor: isotropic
 valid_range_cm1: [400, 20000]
+sources: [Beaini2020]
 axes:
   iso:
     type: table

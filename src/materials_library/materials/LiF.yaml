@@ -3,6 +3,7 @@ name: LiF
 status: verified
 tensor: isotropic
 valid_range_cm1: [100, 5000]
+sources: [Jasperse1966]
 axes:
   iso:
     type: lorentz

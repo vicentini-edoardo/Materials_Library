@@ -5,6 +5,7 @@ status: partial
 tensor: uniaxial
 frame: {z: c (optic) axis}
 valid_range_cm1: [50, 2000]
+sources: [Lane1999]
 axes:
   xx:
     type: lorentz
@@ -51,6 +52,7 @@ alternatives:
       - {w0: 871, strength: 0.105849, gamma: 3}
     note: 'Ma et al. Methods Eq. 4: eps = eps_inf [1 + sum (w_LO^2 - w_TO^2)/(w_TO^2 - w^2 - i w Gamma)]; perp 712/715 G5, 1410/1550 G10, eps_inf 2.7; par 871/890
       G3, eps_inf 2.4 (from Hellwege 1970). Mid-IR only; used for the ghost-polariton simulations.'
+    sources: [Ma2021]
 notes: ['Lane Table 1 classical oscillators: strength = 4 pi rho, damping gamma_j = (tabulated gamma) x nu_j, eps_inf from Chang et al. 1996.', Dispersion form assumed
     to be the Spitzer-Kleinman convention eps_inf + sum 4pi rho nu_j^2/(nu_j^2 - nu^2 - i gamma nu_j nu) cited by Lane; the paper does not print the formula., The
     hyperbolic_optics set mixed Ma 2021 (mid-IR) with unidentified far-IR modes.]

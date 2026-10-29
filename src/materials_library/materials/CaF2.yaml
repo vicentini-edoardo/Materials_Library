@@ -3,6 +3,7 @@ name: CaF2
 status: verified
 tensor: isotropic
 valid_range_cm1: [125, 1000]
+sources: [Kaiser1962]
 axes:
   iso:
     type: lorentz
@@ -16,6 +17,7 @@ alternatives:
     file: data/CaF2_Li1980.csv
     valid_range_cm1: [833.333, 66666.7]
     note: Zero-loss rows reflect absent k data or source zeros; they do not establish a measured absorption floor.
+    sources: [Li1980b]
 notes: [Kaiser oscillator model for the phonon region; use the Li 1980 table above 833 cm-1 (transparent range)., Exists in pyGTM but was not exposed in the old catalog.]
 references:
 - {key: Kaiser1962, citation: 'W. Kaiser, W. G. Spitzer, R. H. Kaiser, L. E. Howarth, Phys. Rev. 127, 1950 (1962)', doi: 10.1103/PhysRev.127.1950, url: 'https://github.com/polyanskiy/refractiveindex.info-scripts'}

@@ -4,6 +4,7 @@ status: partial
 tensor: biaxial
 frame: {x: '[100]', y: '[001]', z: '[010] (van der Waals stacking axis)'}
 valid_range_cm1: [400, 1200]
+sources: [TaboadaGutierrez2020]
 axes:
   xx:
     type: tolo
@@ -20,24 +21,6 @@ axes:
     eps_inf: 3.9
     modes:
     - {to: 976, lo: 1037, gamma: 2.0}
-alternatives:
-  gamma_z_1p5:
-    xx:
-      type: tolo
-      eps_inf: 6.6
-      modes:
-      - {to: 765, lo: 952, gamma: 40}
-    yy:
-      type: tolo
-      eps_inf: 6.1
-      modes:
-      - {to: 506, lo: 842, gamma: 19}
-    zz:
-      type: tolo
-      eps_inf: 3.9
-      modes:
-      - {to: 976, lo: 1037, gamma: 1.5}
-    note: Source-mentioned z-axis damping alternative; the formula ambiguity also applies here.
 notes: ['z gamma: paper gives 2.0 (1.5 gives a slightly better fit).', 'Constants transcribed from the source, but its printed frequency-weighted damping formula
     is dimensionally ambiguous with the quoted cm-1 units. The evaluator uses the conventional TO-LO form; full curve validation remains pending.']
 references:

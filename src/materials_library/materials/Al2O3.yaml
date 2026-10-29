@@ -5,6 +5,7 @@ status: verified
 tensor: uniaxial
 frame: {z: c axis}
 valid_range_cm1: [100, 5000]
+sources: [Schubert2000]
 axes:
   xx:
     type: tolo

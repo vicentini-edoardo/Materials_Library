@@ -3,6 +3,7 @@ name: InN
 status: modelled
 tensor: uniaxial
 valid_range_cm1: [100, 5000]
+sources: [Kasic2002, Reparaz2018]
 axes:
   xx:
     type: tolo

@@ -23,12 +23,37 @@ def names() -> tuple[str, ...]:
     """Canonical built-in material names."""
     return tuple(sorted((path.stem for path in (ROOT / "materials").glob("*.yaml")), key=str.casefold))
 
-def load(name: str) -> dict:
-    """Load one packaged definition by canonical name."""
+def load(name: str, variant: str | None = None) -> dict:
+    """Load one packaged definition by canonical name.
+
+    ``variant`` names one entry of the YAML ``alternatives``; the result is then a complete
+    definition (``axes``, ``sources``, range, note) of that alternative instead of the default.
+    """
     if name not in names():
         raise KeyError(f"Unknown built-in material: {name!r}")
     with (ROOT / "materials" / f"{name}.yaml").open(encoding="utf-8") as fh:
-        return yaml.safe_load(fh)
+        definition = yaml.safe_load(fh)
+    return _apply_variant(definition, variant) if variant else definition
+
+def variants(name: str) -> tuple[str, ...]:
+    """Names of the alternative model sets of one material (the default set is not listed)."""
+    return tuple(load(name).get("alternatives", {}))
+
+def _apply_variant(definition: dict, variant: str) -> dict:
+    try:
+        alt = definition["alternatives"][variant]
+    except KeyError:
+        raise KeyError(f"{definition['name']} has no alternative {variant!r}") from None
+    out = {k: v for k, v in definition.items() if k not in ("alternatives", "axes")}
+    out.update({k: alt[k] for k in ("note", "sources", "valid_range_cm1", "tensor", "frame") if k in alt})
+    if "axes" in alt:
+        out["axes"] = alt["axes"]
+    elif "type" in alt:
+        out["axes"] = {"iso": alt}
+    else:
+        out["axes"] = {k: alt[k] for k in ("xx", "yy", "zz") if k in alt}
+        out["axes"].setdefault("yy", out["axes"]["xx"])
+    return {**out, "variant": variant}
 
 def euler_zxz(phi, theta, psi):
     p, t, s = np.radians([phi, theta, psi])

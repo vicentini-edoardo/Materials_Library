@@ -3,6 +3,7 @@ name: Ge
 status: verified
 tensor: isotropic
 valid_range_cm1: [556, 5263]
+sources: [Li1980]
 axes:
   iso:
     type: table

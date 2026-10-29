@@ -3,6 +3,7 @@ name: PMMA
 status: verified
 tensor: isotropic
 valid_range_cm1: [550, 4000]
+sources: [Tsuda2018]
 axes:
   iso:
     type: lorentz

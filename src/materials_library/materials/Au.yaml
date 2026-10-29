@@ -3,14 +3,20 @@ name: Au
 status: verified
 tensor: isotropic
 valid_range_cm1: [401.123, 33333]
+sources: [Olmon2012]
 axes:
   iso:
     type: table
     file: data/Au_Olmon2012_evap.csv
     valid_range_cm1: [401.123, 33333.3]
 alternatives:
-  drude_Derkachova2016: {type: drude, eps_inf: 9.84, wp: 72670.6, gamma: 580.7, note: 'omega_p = 9.010 eV, gamma = 0.072 eV; fitted on visible data, over-damped in
-      the mid-IR (Im eps +60% vs Olmon at 1000 cm-1).'}
+  drude_Derkachova2016:
+    type: drude
+    eps_inf: 9.84
+    wp: 72670.6
+    gamma: 580.7
+    note: omega_p = 9.010 eV, gamma = 0.072 eV; fitted on visible data, over-damped in the mid-IR (Im eps +60% vs Olmon at 1000 cm-1).
+    sources: [Derkachova2016]
 notes: ['Evaporated film. Replaces pyGTM Johnson&Christy (<1.93 um) + Drude switch, which had a discontinuity at 5180 cm-1.']
 references:
 - {key: Olmon2012, citation: 'R. L. Olmon et al., Optical dielectric function of gold, Phys. Rev. B 86, 235147 (2012)', doi: 10.1103/PhysRevB.86.235147}

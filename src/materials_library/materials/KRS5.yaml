@@ -3,6 +3,7 @@ name: KRS5
 status: verified
 tensor: isotropic
 valid_range_cm1: [254, 17331]
+sources: [Rodney1956]
 axes:
   iso:
     type: table

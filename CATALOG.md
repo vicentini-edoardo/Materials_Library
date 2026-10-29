@@ -29,7 +29,7 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 
 - Euler angles: intrinsic Z–X′–Z″ (φ, θ, ψ) in degrees, R = R_z(φ) R_x(θ) R_z(ψ), and ε_rotated = R ε_diag Rᵀ.
 - `status`: `verified` denotes a source transcription, not universal experimental validity; `modified` denotes a deliberate model change or omitted source contribution; `modelled` includes assumed parameters; `preprint` denotes an earlier source version; `partial` denotes an unresolved source convention. Read the specimen and applicability notes.
-- `alternatives:` in a YAML holds other models for the same material, including explicitly labelled sensitivity assumptions. Alternatives are not selected automatically by the evaluator.
+- `alternatives:` in a YAML holds other models for the same material, including explicitly labelled sensitivity assumptions. Alternatives are not selected automatically by the evaluator. Every model set (the default and each alternative) lists the reference keys it was built from in `sources:`.
 
 ## Index
 
@@ -55,7 +55,7 @@ Edit `tools/build_library.py`, then run `python tools/build_library.py` and `pyt
 | [`MgO`](src/materials_library/materials/MgO.yaml) | isotropic | lorentz | 100–2000 | verified | Jasperse1966; Stephens1952 |
 | [`MoO3`](src/materials_library/materials/MoO3.yaml) | biaxial | TO-LO, 3 modes/axis | 400–1200 | verified | AlvarezPerez2020 |
 | [`PbI2`](src/materials_library/materials/PbI2.yaml) | uniaxial | Lorentz, 1 mode/axis; near-field loss alternative | 40–140 | verified | Santos2026; Lucovsky1976; Lucovsky1977 |
-| [`SiC3C`](src/materials_library/materials/SiC3C.yaml) | isotropic | Lorentz, 1 mode | 50–4000 | verified | Pitman2008; Pitman2008_data; legacy-source alternatives |
+| [`SiC3C`](src/materials_library/materials/SiC3C.yaml) | isotropic | Lorentz, 1 mode | 50–4000 | verified | Pitman2008; Pitman2008_data |
 | [`SiC4H`](src/materials_library/materials/SiC4H.yaml) | isotropic approximation | TO-LO, separate TO/LO damping | 600–1200 | modified | Klein2025; anisotropic Tiwald1999 alternative |
 | [`SiC6H`](src/materials_library/materials/SiC6H.yaml) | uniaxial | Lorentz, 1 mode/axis | 50–4000 | verified | Pitman2008; Pitman2008_data; Tiwald1999 alternative |
 | [`SrTiO3`](src/materials_library/materials/SrTiO3.yaml) | isotropic | TO-LO, 3 modes, 300 K | 40–1800 | verified | Kamaras1995; Xu2024 application |
@@ -144,10 +144,7 @@ References used by the active material definitions, including alternatives and c
 | Ma2021 | W. Ma et al., Ghost hyperbolic surface polaritons in bulk anisotropic crystals, Nature 596, 362 (2021), Methods Eq. 4 (values from Hellwege et al. 1970) | [Source](https://doi.org/10.1038/s41586-021-03755-1) |
 | Mock2017 | A. Mock, R. Korlacki, S. Knight, M. Schubert, Phys. Rev. B 95, 165202 (2017), Tables II-IV | [Source](https://doi.org/10.1103/PhysRevB.95.165202) |
 | Moore2005 | W. J. Moore, J. A. Freitas, R. T. Holm, O. Kovalenkov, V. Dmitriev, Appl. Phys. Lett. 86, 141912 (2005), Table I | [Source](https://doi.org/10.1063/1.1899233) |
-| Mutschke1999 | H. Mutschke et al., A&A 345, 187 (1999) (SiC polytypes), Table 1 | [Source](https://arxiv.org/abs/astro-ph/9903031) |
-| Olego1982 | D. Olego et al. (1982), Raman — via Ioffe NSM | — |
 | Olmon2012 | R. L. Olmon et al., Optical dielectric function of gold, Phys. Rev. B 86, 235147 (2012) | [Source](https://doi.org/10.1103/PhysRevB.86.235147) |
-| PatrickChoyke1970 | L. Patrick, W. J. Choyke (1970) — via Ioffe NSM | [Source](https://www.ioffe.ru/SVA/NSM/Semicond/SiC/optic.html) |
 | Pitman2008 | K. M. Pitman, A. M. Hofmeister, A. B. Corman, A. K. Speck, Optical properties of silicon carbide for astrophysical applications. I. New laboratory infrared reflectance spectra and optical constants, A&A 483, 661–672 (2008), Section 4.2 and Figs. 3, 4, 7 (3C and 6H) | [DOI](https://doi.org/10.1051/0004-6361:20078468) · [Full text](https://arxiv.org/html/0803.1210) |
 | Pitman2008_data | Author-hosted high-resolution classical-dispersion dielectric-function files | [Data and descriptions](https://epsc.wustl.edu/~hofmeist/spectra/IRSiC/) |
 | Popova1972 | S. Popova, T. Tolstykh, V. Vorobev, Opt. Spectrosc. 33, 444 (1972) (amorphous quartz) | — |

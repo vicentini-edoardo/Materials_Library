@@ -3,6 +3,7 @@ name: GST_crystalline
 status: verified
 tensor: isotropic
 valid_range_cm1: [309, 28548.6]
+sources: [Frantz2023]
 axes:
   iso:
     type: table

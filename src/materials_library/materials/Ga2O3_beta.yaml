@@ -4,6 +4,7 @@ status: preprint
 tensor: monoclinic
 frame: {x: crystal c axis, y: perpendicular to b and c (in the a-c plane), z: crystal b axis (monoclinic 2-fold axis)}
 valid_range_cm1: [150, 1200]
+sources: [Schubert2016_preprint]
 model:
   eps_inf:
   - [3.89, 0, 0]

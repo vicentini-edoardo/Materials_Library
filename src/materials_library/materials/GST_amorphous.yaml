@@ -3,6 +3,7 @@ name: GST_amorphous
 status: verified
 tensor: isotropic
 valid_range_cm1: [338, 28548.6]
+sources: [Frantz2023]
 axes:
   iso:
     type: table

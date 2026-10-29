@@ -3,6 +3,7 @@ name: SrTiO3
 status: verified
 tensor: isotropic
 valid_range_cm1: [40, 1800]
+sources: [Kamaras1995]
 axes:
   iso:
     type: tolo

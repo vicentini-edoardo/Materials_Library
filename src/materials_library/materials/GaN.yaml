@@ -4,6 +4,7 @@ status: modified
 tensor: uniaxial
 frame: {z: c axis}
 valid_range_cm1: [300, 1200]
+sources: [Kasic2000]
 axes:
   xx:
     type: tolo
@@ -33,6 +34,7 @@ alternatives:
       modes:
       - {to: 533.0, lo: 744.0, gamma: 17.0}
     note: 'Older film data: eps_inf 5.35 from an index fit, Gamma = 17 cm-1 (lower-quality 1973 films).'
+    sources: [Barker1973]
 notes: ['Kasic sample A (lowest free-carrier density, 7.8e16 cm-3). gamma_LO values are the LPP broadenings ~gamma_LO at this low density.', 'A1(TO) = 537 cm-1 and
     gamma_TO,par = 4 cm-1 were fixed from Raman / assumed in the paper (not fitted).', The old pyGTM GaN values are exactly this sample (source had not been cited).,
   Conservative phonon modelling band. Separate TO/LO damping gives negative loss below approximately 153 cm-1; do not extrapolate this fit there. Carrier response

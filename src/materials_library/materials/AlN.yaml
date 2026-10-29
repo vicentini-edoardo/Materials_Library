@@ -4,6 +4,7 @@ status: modelled
 tensor: uniaxial
 frame: {z: c axis}
 valid_range_cm1: [50, 14000]
+sources: [Moore2005]
 axes:
   xx:
     type: lorentz
@@ -31,6 +32,7 @@ alternatives:
     type: table
     file: data/AlN_Kischkat2012_film.csv
     valid_range_cm1: [700.0, 6500.01]
+    sources: [Kischkat2012]
 notes: ['Moore Eq. 1: eps = 1 + sum (eps_j - eps_(j-1)) nu_j^2 / (nu_j^2 - nu^2 + 2 i nu Gamma_j): gap oscillator, two-phonon term at 2 nu_TO, one-phonon term at
     nu_TO.', 'Converted to exp(-i w t): damping gamma = 2 Gamma, so the one-phonon gamma is 4.4 cm-1. pyGTM used 2.2 (half).', 'LO (reference only): 909.6 / 888.9
     cm-1; LST: 4.175*(909.6/667.2)^2 = 7.76 = eps_DC.', 'E||c values were modelled in the paper, not fitted.', The old pyGTM AlN values are these (source had not

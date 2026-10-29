@@ -4,6 +4,7 @@ status: verified
 tensor: uniaxial
 frame: {x: in-plane, y: in-plane, z: c axis; normal to layers}
 valid_range_cm1: [40, 140]
+sources: [Santos2026]
 axes:
   xx:
     type: lorentz
@@ -42,6 +43,7 @@ alternatives:
         oscillators:
         - {w0: 96, strength: 3.4, gamma: 20.16}
     note: 'Santos near-field loss fit: in-plane dimensionless Gamma = 0.02; all other coefficients unchanged.'
+    sources: [Santos2026]
 notes: [Layered lead iodide THz phonon fit. Range follows SI Fig. 4; not an electronic/visible model., 'Source Gamma is dimensionless: gamma = Gamma*TO, giving 4.68
     and 20.16 cm-1. Use additive strengths from Table 3; do not combine them with its separately listed LO values.', Default retains the historical far-field loss
     baseline. Lower-loss near-field alternative is specimen dependent and must be selected explicitly.]

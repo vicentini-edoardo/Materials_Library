@@ -4,6 +4,7 @@ aliases: [SiNx]
 status: verified
 tensor: isotropic
 valid_range_cm1: [700, 6500]
+sources: [Kischkat2012]
 axes:
   iso:
     type: table

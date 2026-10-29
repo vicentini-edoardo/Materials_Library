@@ -3,6 +3,7 @@ name: graphene
 status: modelled
 tensor: sheet
 valid_range_cm1: [10, 20000]
+sources: [Falkovsky2008]
 model:
   type: graphene_falkovsky
   defaults: {mu_eV: 0.3, T_K: 300, tau_fs: 100}

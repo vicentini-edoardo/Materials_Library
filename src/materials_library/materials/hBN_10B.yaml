@@ -4,6 +4,7 @@ status: verified
 tensor: uniaxial
 frame: {z: c axis (out of plane of a flake)}
 valid_range_cm1: [100, 5000]
+sources: [Giles2018]
 axes:
   xx:
     type: tolo

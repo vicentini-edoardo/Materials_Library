@@ -3,6 +3,7 @@ name: KBr
 status: verified
 tensor: isotropic
 valid_range_cm1: [238.095, 50000]
+sources: [Li1976]
 axes:
   iso:
     type: table

@@ -4,6 +4,7 @@ status: verified
 tensor: uniaxial
 frame: {z: c axis}
 valid_range_cm1: [50, 4000]
+sources: [Pitman2008, Pitman2008_data]
 axes:
   xx:
     type: lorentz
@@ -39,6 +40,7 @@ alternatives:
       - {to: 788.0, lo: 967.0, gamma: 2.7}
     valid_range_cm1: [700, 4000]
     note: 'Previous default: sample-7 lattice fit, Gamma = 2.7 cm-1. Measured carrier density 2e17 cm-3; Drude and multiphonon contributions are omitted.'
+    sources: [Tiwald1999]
 notes: ['Pitman gray 6H single-oscillator fits: E perpendicular c has eps_inf 7.04, TO 797.5, strength 3.33, FWHM 5.3; E parallel c has eps_inf 8.8, TO 787.8, strength
     4.45, FWHM 5.5 (cm-1).', 'Library gamma = FWHM, not 2*pi*FWHM. Full complex curves checked against the author dielectric files. Ordinary author filenames for
     1osc and 2osc are interchanged; select by the numeric header and curve.', 'Extraordinary TO 787.8 follows Section 4.2 and author data; Fig. 3 caption instead

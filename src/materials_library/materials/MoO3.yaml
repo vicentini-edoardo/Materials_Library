@@ -4,6 +4,7 @@ status: verified
 tensor: biaxial
 frame: {x: '[100]', y: '[001]', z: '[010] (van der Waals stacking axis)'}
 valid_range_cm1: [400, 1200]
+sources: [AlvarezPerez2020]
 axes:
   xx:
     type: tolo

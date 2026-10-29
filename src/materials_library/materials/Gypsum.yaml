@@ -4,6 +4,7 @@ status: verified
 tensor: monoclinic
 frame: {x: crystal a axis, y: perpendicular to a and b in the a-c plane, z: crystal b axis; normal to exfoliated (010) layers}
 valid_range_cm1: [1080, 1220]
+sources: [DiazNunez2025]
 model:
   eps_inf:
   - [2.2819, 0.0086, 0]

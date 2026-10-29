@@ -3,6 +3,7 @@ name: ZnSe
 status: verified
 tensor: isotropic
 valid_range_cm1: [460.001, 20000]
+sources: [Querry1987]
 axes:
   iso:
     type: table

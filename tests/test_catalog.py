@@ -152,3 +152,26 @@ def test_table_is_loaded_once_for_repeated_evaluations(monkeypatch):
     eps_tensor(material, [900])
     eps_tensor(material, [1000])
     assert len(calls) == 1
+
+
+def test_every_model_set_names_its_references():
+    for name in names():
+        if name == "vacuum":
+            continue
+        material = load(name)
+        keys = {ref["key"] for ref in material["references"]}
+        sets = {"default": material, **material.get("alternatives", {})}
+        for label, model_set in sets.items():
+            assert model_set.get("sources"), (name, label)
+            assert set(model_set["sources"]) <= keys, (name, label)
+
+
+def test_every_alternative_loads_and_evaluates():
+    from materials_library import variants
+    w = np.array([600.0, 900.0])
+    for name in names():
+        for variant in variants(name):
+            material = load(name, variant)
+            assert material["variant"] == variant and "alternatives" not in material
+            assert material["sources"] == load(name)["alternatives"][variant]["sources"]
+            assert np.isfinite(eps_tensor(material, w)).all(), (name, variant)

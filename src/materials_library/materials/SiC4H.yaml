@@ -3,6 +3,7 @@ name: SiC4H
 status: modified
 tensor: isotropic
 valid_range_cm1: [600, 1200]
+sources: [Klein2025]
 axes:
   iso:
     type: tolo
@@ -30,33 +31,13 @@ alternatives:
     note: Sample 9 lattice fit, Gamma = 1.4 cm-1, carrier density fixed to zero. Multiphonon absorption is omitted.
     tensor: uniaxial
     frame: {z: c axis}
-  gamma6_sensitivity:
-    xx:
-      type: tolo
-      eps_inf: 6.6
-      modes:
-      - {to: 797.0, lo: 970.0, gamma: 6.0}
-    yy:
-      type: tolo
-      eps_inf: 6.6
-      modes:
-      - {to: 797.0, lo: 970.0, gamma: 6.0}
-    zz:
-      type: tolo
-      eps_inf: 6.9
-      modes:
-      - {to: 782.0, lo: 964.0, gamma: 6.0}
-    valid_range_cm1: [700, 4000]
-    note: 'Previous default: broader-loss modelling assumption, not a Tiwald sample measurement.'
-    tensor: uniaxial
-    frame: {z: c axis}
+    sources: [Tiwald1999]
 notes: ['Klein 2025: commercial semi-insulating 4H-SiC wafer from MSE Supplies, thickness 500 micrometres. FTIR reflectance fitted with the factorized TO-LO model
     (Eq. 1). eps_inf 6.56 is adopted from Harima 1995; TO, LO and damping are fitted.', The source reports one scalar permittivity. The default follows that isotropic
     approximation; it does not establish equal measured ordinary and extraordinary responses of the intrinsically uniaxial 4H crystal. Use Tiwald1999_sample9 for
     the retained anisotropic lattice fit., Separate gamma_TO = 2.9 and gamma_LO = 3.0 cm-1 map directly to the library exp(-i omega t) convention. Do not replace
     them with one common damping., Declared 600-1200 cm-1 band follows Fig. 2; the source does not validate the former 700-4000 cm-1 range for this fit. No Drude
-    or multiphonon terms are included., 'gamma6_sensitivity retains the older anisotropic Gamma = 6 modelling assumption; it has no specific experimental reference.
-    Alternatives carry their own tensor, frame and range.']
+    or multiphonon terms are included.]
 references:
 - {key: Klein2025, citation: 'M. Klein, Y. Gershuni, A. Perutski, J.-P. Hugonin, I. Epstein, Nanometer-Scale Cavities for Mid-Infrared Radiation via Image Phonon
     Polariton Resonators, Nano Lett. 25, 8999-9005 (2025), Eq. 1, Fig. 2 and Methods; parameters checked in arXiv v2', doi: 10.1021/acs.nanolett.5c01352, url: 'https://arxiv.org/html/2503.04168v2',

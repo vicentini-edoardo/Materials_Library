@@ -3,6 +3,7 @@ name: Diamond
 status: verified
 tensor: isotropic
 valid_range_cm1: [20, 4000]
+sources: [Dore1998]
 axes:
   iso:
     type: table

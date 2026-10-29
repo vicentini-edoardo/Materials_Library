@@ -3,6 +3,7 @@ name: Si
 status: verified
 tensor: isotropic
 valid_range_cm1: [430, 4000]
+sources: [ChandlerHorowitz2005]
 axes:
   iso:
     type: table

@@ -4,6 +4,7 @@ status: modelled
 tensor: sheet
 frame: {x: armchair, y: zigzag}
 valid_range_cm1: [10, 5000]
+sources: [Low2014]
 model:
   type: bp_drude
   defaults: {n_cm2: 10000000000000.0, eta_meV: 10, m_x: 0.15, m_y: 0.7}

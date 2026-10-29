@@ -5,6 +5,7 @@ status: verified
 tensor: uniaxial
 frame: {z: c (optic) axis}
 valid_range_cm1: [300, 1600]
+sources: [GervaisPiriou1975]
 axes:
   xx:
     type: tolo

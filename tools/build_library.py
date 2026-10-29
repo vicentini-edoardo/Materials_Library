@@ -339,15 +339,10 @@ add('LiF', tensor='isotropic', status='verified', valid_range_cm1=[100, 5000], r
 M['SiC4H']['alternatives'] = dict(Tiwald1999_sample9=dict(
     **uni(tolo(6.6, [(797.0, 970.0, 1.4)]), tolo(6.9, [(782.0, 964.0, 1.4)])),
     valid_range_cm1=[700, 4000], note='Sample 9 lattice fit, Gamma = 1.4 cm-1, carrier density fixed to zero. Multiphonon absorption is omitted.'))
-M['SiC4H']['alternatives']['gamma6_sensitivity'] = dict(
-    **uni(tolo(6.6, [(797.0, 970.0, 6.0)]), tolo(6.9, [(782.0, 964.0, 6.0)])),
-    valid_range_cm1=[700, 4000], note='Previous default: broader-loss modelling assumption, not a Tiwald sample measurement.')
-M['SiC4H']['notes'].insert(0, 'Default is the Tiwald sample-9 lattice fit, Gamma = 1.4 cm-1. Previous Gamma = 6 assumption is retained as gamma6_sensitivity.')
+M['SiC4H']['notes'].insert(0, 'Default is the Tiwald sample-9 lattice fit, Gamma = 1.4 cm-1.')
 for nm in ('SiC4H', 'SiC6H'):
     M[nm]['valid_range_cm1'] = [700, 4000]
     M[nm]['notes'].append('Lattice-only approximation in the source measurement band; carriers and multiphonon absorption are omitted. This is not the full measured dielectric response.')
-M['SiC3C']['alternatives'] = dict(gamma6_sensitivity=dict(
-    **tolo(6.52, [(796.2, 972.2, 6.0)]), note='Broader-loss sensitivity model, not an exact Pitman experimental fit.'))
 M['GaN']['valid_range_cm1'] = [300, 1200]
 M['GaN']['notes'].append('Conservative phonon modelling band. Separate TO/LO damping gives negative loss below approximately 153 cm-1; do not extrapolate this fit there. Carrier response is omitted.')
 M['MgO']['valid_range_cm1'] = [100, 2000]
@@ -359,30 +354,23 @@ M['InN']['notes'].append('Composite lattice model: the shared Gamma = 4.4 cm-1 i
 M['calcite']['status'] = 'partial'
 M['V2O5']['status'] = 'partial'
 M['V2O5']['notes'].append('Constants transcribed from the source, but its printed frequency-weighted damping formula is dimensionally ambiguous with the quoted cm-1 units. The evaluator uses the conventional TO-LO form; full curve validation remains pending.')
-M['V2O5']['alternatives'] = dict(gamma_z_1p5=dict(
-    xx=M['V2O5']['axes']['xx'], yy=M['V2O5']['axes']['yy'], zz=tolo(3.9, [(976, 1037, 1.5)]),
-    note='Source-mentioned z-axis damping alternative; the formula ambiguity also applies here.'))
 M['Ga2O3_beta']['status'] = 'preprint'
 M['Ga2O3_beta']['references'] = refs('Schubert2016_preprint', 'Schubert2016_published')
 M['Ga2O3_beta']['notes'].append('Default contains the preprint lattice response only; the source samples also have free-carrier contributions.')
 M['GaAs']['references'] += refs('Skauli2003')
 M['InAs']['references'] += refs('Lorimor1965')
 # --- SiC experimental defaults, checked against Pitman's author files (2026-10-06) ---
-M['SiC3C']['alternatives']['legacy_gamma3'] = dict(
-    **M['SiC3C']['axes']['iso'], valid_range_cm1=[100, 5000],
-    note='Previous mixed-source default: assumed Gamma = 3 cm-1, not a Pitman experimental fit.')
 M['SiC3C']['axes'] = dict(iso=dict(type='lorentz', eps_inf=7.0756,
     oscillators=[dict(w0=797.5, strength=3.5, gamma=6.0)]))
 M['SiC3C']['valid_range_cm1'] = [50, 4000]
 M['SiC3C']['status'] = 'verified'
-M['SiC3C']['references'] = refs('Pitman2008', 'Pitman2008_data', 'PatrickChoyke1970', 'Olego1982', 'Mutschke1999', used={
+M['SiC3C']['references'] = refs('Pitman2008', 'Pitman2008_data', used={
     'Pitman2008': 'Default single-oscillator reflectance fit, Fig. 7 and Section 4.2.',
-    'Pitman2008_data': 'betaSiC_nk_1osc_hires.txt; eps_inf = 7.0756 reproduces the author dielectric data.',
-    'PatrickChoyke1970': 'Legacy alternatives only.', 'Olego1982': 'Legacy alternatives only.', 'Mutschke1999': 'Legacy damping context only.'})
+    'Pitman2008_data': 'betaSiC_nk_1osc_hires.txt; eps_inf = 7.0756 reproduces the author dielectric data.'})
 M['SiC3C']['notes'] = [
     'Pitman 3C CVD wafer single-oscillator fit: TO 797.5, FWHM 6.0 cm-1, strength 3.5, eps_inf 7.0756. Undamped LO derived from the complete fit is approximately 975 cm-1.',
     'Library gamma equals the reported FWHM in cm-1, not the paper coefficient Gamma = 2*pi*FWHM. Default matches the author dielectric-function file, rather than changing damping alone.',
-    'Room-temperature phonon fit in the measured far/mid-IR band (50-4000 cm-1); weak features and higher-frequency electronic dispersion are not included. Legacy alternatives retain their original parameters.']
+    'Room-temperature phonon fit in the measured far/mid-IR band (50-4000 cm-1); weak features and higher-frequency electronic dispersion are not included.']
 M['SiC6H']['alternatives'] = dict(Tiwald1999_sample7=dict(
     **M['SiC6H']['axes'], valid_range_cm1=[700, 4000],
     note='Previous default: sample-7 lattice fit, Gamma = 2.7 cm-1. Measured carrier density 2e17 cm-3; Drude and multiphonon contributions are omitted.'))
@@ -414,8 +402,7 @@ M['SiC4H']['notes'] = [
     'Klein 2025: commercial semi-insulating 4H-SiC wafer from MSE Supplies, thickness 500 micrometres. FTIR reflectance fitted with the factorized TO-LO model (Eq. 1). eps_inf 6.56 is adopted from Harima 1995; TO, LO and damping are fitted.',
     'The source reports one scalar permittivity. The default follows that isotropic approximation; it does not establish equal measured ordinary and extraordinary responses of the intrinsically uniaxial 4H crystal. Use Tiwald1999_sample9 for the retained anisotropic lattice fit.',
     'Separate gamma_TO = 2.9 and gamma_LO = 3.0 cm-1 map directly to the library exp(-i omega t) convention. Do not replace them with one common damping.',
-    'Declared 600-1200 cm-1 band follows Fig. 2; the source does not validate the former 700-4000 cm-1 range for this fit. No Drude or multiphonon terms are included.',
-    'gamma6_sensitivity retains the older anisotropic Gamma = 6 modelling assumption; it has no specific experimental reference. Alternatives carry their own tensor, frame and range.']
+    'Declared 600-1200 cm-1 band follows Fig. 2; the source does not validate the former 700-4000 cm-1 range for this fit. No Drude or multiphonon terms are included.']
 # ============================================================= s-SNOM additions (2026-10-13)
 R.update({
  'DiazNunez2025': dict(citation='P. Díaz-Núñez et al., Visualization of topological shear polaritons in gypsum thin films, Science Advances 11, eadw3452 (2025); coefficients checked in author SI Tables S1-S2', doi='10.1126/sciadv.adw3452', url='https://arxiv.org/pdf/2501.19242'),
@@ -506,6 +493,66 @@ for n in ('Ga2O3_beta', 'CdWO4'):
     M[n]['model']['eps_inf_as_rotated_diagonal'] = dict(diagonal=[ev[0], ev[1], e[2][2]], euler_deg=[th, 0.0, 0.0],
         note='eps_inf = R(euler) diag(...) R^T, rotation about z (= b).')
 
+# ------------------------------------------------------------------ reference keys per model set
+# Every model set (the default `axes`/`model` and each alternative) names the references it was built from.
+# Format: material -> {set: [keys]}; the default set is called 'default'.
+L = 'Lockwood2005'
+SOURCES = {
+    'Ag': {'default': ['Yang2015'], 'drude_Yang2015': ['Yang2015']},
+    'Al2O3': {'default': ['Schubert2000']},
+    'AlAs': {'default': [L], 'Lockwood2005_exact': [L]},
+    'AlN': {'default': ['Moore2005'], 'film_Kischkat2012': ['Kischkat2012']},
+    'Au': {'default': ['Olmon2012'], 'drude_Derkachova2016': ['Derkachova2016']},
+    'BaF2': {'default': ['Querry1987'], 'lorentz_Kaiser1962': ['Kaiser1962']},
+    'CaF2': {'default': ['Kaiser1962'], 'Li1980': ['Li1980b']},
+    'CdWO4': {'default': ['Mock2017']},
+    'Diamond': {'default': ['Dore1998']},
+    'GST_amorphous': {'default': ['Frantz2023']},
+    'GST_crystalline': {'default': ['Frantz2023']},
+    'Ga2O3_beta': {'default': ['Schubert2016_preprint']},
+    'GaAs': {'default': [L], 'Lockwood2005_exact': [L], 'table_Skauli2003': ['Skauli2003']},
+    'GaN': {'default': ['Kasic2000'], 'Barker1973': ['Barker1973']},
+    'GaP': {'default': [L], 'Lockwood2005_exact': [L]},
+    'Ge': {'default': ['Li1980']},
+    'Gypsum': {'default': ['DiazNunez2025']},
+    'InAs': {'default': [L], 'Lockwood2005_exact': [L], 'table_Lorimor1965': ['Lorimor1965']},
+    'InN': {'default': ['Kasic2002', 'Reparaz2018']},
+    'InP': {'default': [L], 'Lockwood2005_exact': [L]},
+    'InSb': {'default': [L], 'Lockwood2005_exact': [L]},
+    'KBr': {'default': ['Li1976']},
+    'KRS5': {'default': ['Rodney1956']},
+    'LiF': {'default': ['Jasperse1966']},
+    'MgO': {'default': ['Jasperse1966'], 'transparent_Stephens1952': ['Stephens1952']},
+    'MoO3': {'default': ['AlvarezPerez2020']},
+    'PMMA': {'default': ['Tsuda2018']},
+    'PbI2': {'default': ['Santos2026'], 'near_field_Santos2026': ['Santos2026']},
+    'Si': {'default': ['ChandlerHorowitz2005']},
+    'Si3N4_film': {'default': ['Kischkat2012']},
+    'SiC3C': {'default': ['Pitman2008', 'Pitman2008_data']},
+    'SiC4H': {'default': ['Klein2025'], 'Tiwald1999_sample9': ['Tiwald1999']},
+    'SiC6H': {'default': ['Pitman2008', 'Pitman2008_data'], 'Tiwald1999_sample7': ['Tiwald1999']},
+    'SrTiO3': {'default': ['Kamaras1995']},
+    'V2O5': {'default': ['TaboadaGutierrez2020']},
+    'VO2_insulating': {'default': ['Beaini2020']},
+    'VO2_metallic': {'default': ['Beaini2020']},
+    'ZnO': {'default': ['Ashkenov2003'], 'film_Ashkenov2003': ['Ashkenov2003'], 'pellet_Querry1985': ['Querry1985']},
+    'ZnSe': {'default': ['Querry1987']},
+    'aSiO2': {'default': ['Franta2016'], 'film_Kischkat2012': ['Kischkat2012'], 'Popova1972': ['Popova1972']},
+    'alpha_quartz': {'default': ['GervaisPiriou1975']},
+    'black_phosphorus': {'default': ['Low2014']},
+    'calcite': {'default': ['Lane1999'], 'Ma2021': ['Ma2021']},
+    'graphene': {'default': ['Falkovsky2008']},
+    'hBN': {'default': ['Giles2018']}, 'hBN_10B': {'default': ['Giles2018']}, 'hBN_11B': {'default': ['Giles2018']},
+    'talc': {'default': ['Feres2025']},
+}
+for n, sets in SOURCES.items():
+    have = {r['key'] for r in M[n]['references']}
+    assert set(sets) - {'default'} == set(M[n].get('alternatives', {})), n
+    for name, keys in sets.items():
+        assert set(keys) <= have, (n, name)
+        (M[n] if name == 'default' else M[n]['alternatives'][name])['sources'] = keys
+assert all('sources' in M[n] for n in M if n != 'vacuum'), [n for n in M if n != 'vacuum' and 'sources' not in M[n]]
+
 class NoAlias(yaml.SafeDumper):
     def ignore_aliases(self, data): return True
 
@@ -513,7 +560,7 @@ if __name__ == '__main__':
     OUT.mkdir(parents=True, exist_ok=True)
     for path in OUT.glob("*.yaml"):
         path.unlink()
-    order = ['name', 'aliases', 'status', 'tensor', 'frame', 'valid_range_cm1', 'axes', 'model', 'recipe', 'alternatives', 'notes', 'references']
+    order = ['name', 'aliases', 'status', 'tensor', 'frame', 'valid_range_cm1', 'sources', 'axes', 'model', 'recipe', 'alternatives', 'notes', 'references']
     for n, d in M.items():
         dd = {k: d[k] for k in order if k in d}
         with (OUT / f"{n}.yaml").open("w", encoding="utf-8") as fh:

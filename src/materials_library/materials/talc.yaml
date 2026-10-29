@@ -4,6 +4,7 @@ status: verified
 tensor: uniaxial
 frame: {x: in-plane, y: in-plane, z: normal to layers}
 valid_range_cm1: [900, 1100]
+sources: [Feres2025]
 axes:
   xx:
     type: tolo
