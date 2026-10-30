@@ -169,7 +169,7 @@ References used by the active material definitions, including alternatives and c
 
 **Short answer: no single rotated diagonal matrix reproduces ε(ω) of β‑Ga₂O₃ or CdWO₄, but the tensor is exactly a sum of rotated diagonal (rank‑1) matrices, each with its own fixed Euler angles.**
 
-In a monoclinic crystal the b axis (here z) is a principal axis at every frequency. In the a–c plane, however, every Bu phonon has its own dipole direction α_l. The principal axes of Re ε therefore rotate with frequency, and those of Im ε rotate differently (see `figures/monoclinic_principal_axes.png`). The best single fixed rotation still leaves |ε_xy| up to 68 (Ga₂O₃) and 51 (CdWO₄) inside the reststrahlen bands. A diagonal material + one Euler rotation is therefore only an approximation, valid in a narrow band far from the phonons.
+In a monoclinic crystal the b axis (here z) is a principal axis at every frequency. In the a–c plane, however, every Bu phonon has its own dipole direction α_l. The principal axes of Re ε therefore rotate with frequency, and those of Im ε rotate differently. The best single fixed rotation still leaves |ε_xy| up to 68 (Ga₂O₃) and 51 (CdWO₄) inside the reststrahlen bands. A diagonal material + one Euler rotation is therefore only an approximation, valid in a narrow band far from the phonons.
 
 The exact form used here (Schubert's eigendielectric-displacement model) is
 

@@ -5,6 +5,11 @@ __pycache__/
 build/
 dist/
 .venv/
+.ipynb_checkpoints/
+.mypy_cache/
+.ruff_cache/
+.env
+*.log
 
 # Supplied source snapshot kept beside this repository
 README_2.md
